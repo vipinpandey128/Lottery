@@ -1,0 +1,34 @@
+
+<hr>
+<mat-card class="example-card">
+    <mat-card-header><h4>Edit Role</h4></mat-card-header>
+    <mat-card-content>
+        <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="enter role name" [disabled]="true" name="RoleName" [(ngModel)]="RoleModel.RoleName" maxlength="50"
+                        #refRoleName="ngModel" id="RoleName" required>
+                    <div *ngIf="!refRoleName.valid  && (refRoleName.dirty || refRoleName.touched)" class="alert-danger">
+                        <div [hidden]="!refRoleName.errors.required">
+                            RoleName is required
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                   
+                        <mat-checkbox type="checkbox" id="Status" name="Status" class="example-margin" maxlength="50" #refStatus="ngModel" [(ngModel)]="RoleModel.Status">Status</mat-checkbox>
+                  
+                </div>
+                <div class="col-md-1">
+                    <button mat-raised-button type="submit" [disabled]="!f.form.valid" color="accent">Submit</button>
+                </div>
+                <div class="col-md-1">
+                    <a class="btn btn-info" [routerLink]="['/Role/All']">
+                        All Roles </a>
+                </div>
+
+            </div>
+        </form>
+
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,158 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
+
+/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+/* You can add global styles to this file, and also import other style files */
+/*@import "~bootstrap/dist/css/bootstrap.css";*/  
+
+.mat-elevation-z8 .mat-table{
+    width: 100%;
+    }
+    h1 {
+        color: #369;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 250%;
+      }
+      h2, h3 {
+        color: #444;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: lighter;
+      }
+      body {
+        margin: 0em;
+      }
+      body, input[text], button {
+        color: #333;
+        font-family: Cambria, Georgia;
+      }
+      a {
+        cursor: pointer;
+        cursor: hand;
+        text-decoration: none;
+      }
+      button {
+        font-family: Arial;
+        background-color: #eee;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        cursor: hand;
+      }
+      button:hover {
+        background-color: #cfd8dc;
+      }
+      button:disabled {
+        background-color: #eee;
+        color: #aaa;
+        cursor: auto;
+      }
+      
+      /* Navigation link styles */
+      /* nav a {
+        padding: 5px 10px;
+        text-decoration: none;
+        margin-right: 10px;
+        margin-top: 10px;
+        display: inline-block;
+        background-color: #eee;
+        border-radius: 4px;
+      }
+      nav a:visited, a:link {
+        color: #607D8B;
+      }
+      nav a:hover {
+        color: #039be5;
+        background-color: #CFD8DC;
+      }
+      nav a.active {
+        color: #039be5;
+      }
+       */
+      /* everywhere else */
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      
+      
+      /*
+      Copyright Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license
+      */
+      .ng-valid[required], .ng-valid.required  {
+        border-left: 5px solid #42A948; /* green */
+      }
+      
+      .ng-invalid:not(form)  {
+        border-left: 5px solid #a94442; /* red */
+      }
+    
+      body {
+        overflow-x: hidden;
+      }
+      
+      #sidebar-wrapper {
+        min-height: 100vh;
+        margin-left: -15rem;
+        -webkit-transition: margin .25s ease-out;
+        -moz-transition: margin .25s ease-out;
+        -o-transition: margin .25s ease-out;
+        transition: margin .25s ease-out;
+      }
+      
+      #sidebar-wrapper .sidebar-heading {
+        padding: 0.875rem 1.25rem;
+        font-size: 1.2rem;
+      }
+      
+      #sidebar-wrapper .list-group {
+        width: 15rem;
+      }
+      
+      #page-content-wrapper {
+        min-width: 100vw;
+      }
+      
+      #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0;
+      }
+      
+      @media (min-width: 768px) {
+        #sidebar-wrapper {
+          margin-left: 0;
+        }
+      
+        #page-content-wrapper {
+          min-width: 0;
+          width: 100%;
+        }
+      
+        #wrapper.toggled #sidebar-wrapper {
+          margin-left: -15rem;
+        }
+      }
+
+      .nav-item{
+        padding:2px;
+        margin-left: 7px;
+      }
+      
+    
+    /* html, body { height: 100%; }
+    body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+    
+    .blue{ color: #2196f3  ;}
+    .green{ color: #00695c  ;}
+    .lgreen{ color: #43a047  ;}
+    .dgreen{ color: #00e676  ;}
+    .orange{ color: #ff5722  ;}
+    .lorange{ color: #795548  ;}
+    .purple{ color: #673ab7  ;}
+    .pink{ color: #f50057  ;}
+    .lpurple{ color: #d500f9  ;}
+    .red{ color: #d50000  ;}
+    .sky{ color: #ab47bc  ;}
+    .lsky{ color: #7e57c2  ;}
+    

@@ -1,0 +1,38 @@
+<h4>Edit Scheme</h4>
+
+<hr>
+
+
+<div class="panel panel-default">
+  
+    <div class="panel-body">
+        <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+            <input type="hidden" name="SchemeID" [(ngModel)]="SchemeForms.SchemeID" id="SchemeID">
+            <div class="row">
+                <div class="col-md-3">
+                    <input placeholder="Enter Scheme Name" type="text" [disabled]="true" class="form-control" name="SchemeName" [(ngModel)]="SchemeForms.SchemeName"
+                        maxlength="50" #refSchemeName="ngModel" id="SchemeName" required>
+                    <div *ngIf="!refSchemeName.valid  && (refSchemeName.dirty || refSchemeName.touched)" class="alert-danger">
+                        <div [hidden]="!refSchemeName.errors.required">
+                            SchemeName is required
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="name"></label>
+                    
+                    <mat-checkbox type="checkbox" name="Status" [(ngModel)]="SchemeForms.Status"
+                        maxlength="50" #refStatus="ngModel" id="SchemeName">Status</mat-checkbox>
+                </div>
+        
+                <div class="col-md-1">
+                    <button type="submit" color="accent" mat-raised-button  [disabled]="!f.form.valid">Submit</button>
+                </div>
+                <div class="col-md-1">
+                    <a color="primary" mat-raised-button [routerLink]="['/Scheme/All']">
+                        All Scheme </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
