@@ -9,8 +9,6 @@ import { AllUserRegistrationComponent } from './CreateUsers/app.AllUserRegistrat
 import { AssignRoleComponent } from './AssignRole/app.AssignRole.Component';
 import { AllAssignRoleComponent } from './AssignRole/app.AllAssignRole.component';
 import { SchemeComponent } from './SchemeMasters/app.Scheme.Component';
-import { EditSchemeComponent } from './SchemeMasters/app.EditScheme.Component';
-import { AllSchemeComponent } from './SchemeMasters/app.AllScheme.Component';
 import { GameComponent } from './Game/Game.component';
 import { AddMoneyComponent } from './AddMoney/AddMoney.component';
 import { AllTransactionComponent } from './AllTransaction/AllTransaction.component';
@@ -61,8 +59,6 @@ const routes: Routes = [
      component: AppAdminLayoutComponent,
      children: [
        { path: 'Add', component: SchemeComponent , canActivate: [AdminAuthGuardService] },
-       { path: 'Edit/:schemeId', component: EditSchemeComponent , canActivate: [AdminAuthGuardService] },
-       { path: 'All', component: AllSchemeComponent, canActivate: [AdminAuthGuardService]  }
      ]
    },
    {

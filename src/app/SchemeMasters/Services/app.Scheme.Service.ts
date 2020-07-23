@@ -26,6 +26,7 @@ export class SchemeService {
 
     // Save Scheme
     public SaveScheme(schemeMasterModel: SchemeMasterModel) {
+        console.log(schemeMasterModel);
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.post<any>(this.apiUrl, schemeMasterModel, { headers: headers })

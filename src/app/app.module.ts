@@ -4,6 +4,7 @@ import { AgentAuthGuardService } from './AuthGuard/AgentAuthGuardService';
 import { BetComponent } from './Bet/Bet.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatChipsModule} from '@angular/material/chips';
 import { BsDatepickerModule, } from 'ngx-bootstrap/datepicker';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,8 +16,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AppComponent } from './app.component';
 import { SchemeComponent } from './SchemeMasters/app.Scheme.Component';
-import { AllSchemeComponent } from './SchemeMasters/app.AllScheme.Component';
-import { EditSchemeComponent } from './SchemeMasters/app.EditScheme.Component';
 import { PlanMasterComponent } from './PlanMaster/app.planmaster.component';
 import { AllPlanMasterComponent } from './PlanMaster/app.allplanmaster.component';
 import { EditPlanComponent } from './PlanMaster/app.EditPlan.component';
@@ -79,8 +78,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       AppAdminLayoutComponent,
       AppUserLayoutComponent,
       SchemeComponent,
-      AllSchemeComponent,
-      EditSchemeComponent,
       PlanMasterComponent,
       AllPlanMasterComponent,
       EditPlanComponent,
@@ -134,7 +131,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       MatCardModule,
       MatInputModule,
       MatSnackBarModule,
-      //Ng4LoadingSpinnerModule,
+      MatChipsModule,
       BrowserModule,
       BrowserAnimationsModule,
       FormsModule,

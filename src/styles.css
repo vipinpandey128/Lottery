@@ -155,4 +155,10 @@
     .red{ color: #d50000  ;}
     .sky{ color: #ab47bc  ;}
     .lsky{ color: #7e57c2  ;}
+
+    .alert-danger {
+      color: #d50000 !important;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+  }
     
