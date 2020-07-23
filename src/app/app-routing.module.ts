@@ -3,8 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppAdminLayoutComponent } from './_layout/app-adminlayout.component';
 import { RoleComponent } from './RoleMaster/app.Role.component';
 import { AdminAuthGuardService } from './AuthGuard/AdminAuthGuardService';
-import { EditRoleComponent } from './RoleMaster/app.EditRole.component';
-import { AllRoleComponent } from './RoleMaster/app.AllRole.component';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
 import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.Component';
 import { AllUserRegistrationComponent } from './CreateUsers/app.AllUserRegistration.Component';
@@ -39,8 +37,6 @@ const routes: Routes = [
     component: AppAdminLayoutComponent,
     children: [
       { path: 'Add', component: RoleComponent , canActivate: [AdminAuthGuardService] },
-      { path: 'Edit/:RoleID', component: EditRoleComponent , canActivate: [AdminAuthGuardService] },
-      { path: 'All', component: AllRoleComponent , canActivate: [AdminAuthGuardService] }
     ]
   },
     {

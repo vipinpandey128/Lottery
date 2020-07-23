@@ -1,3 +1,4 @@
+import { NotificationService } from './services/Notification.service';
 import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 import { AgentAuthGuardService } from './AuthGuard/AgentAuthGuardService';
 import { BetComponent } from './Bet/Bet.component';
@@ -20,8 +21,6 @@ import { PlanMasterComponent } from './PlanMaster/app.planmaster.component';
 import { AllPlanMasterComponent } from './PlanMaster/app.allplanmaster.component';
 import { EditPlanComponent } from './PlanMaster/app.EditPlan.component';
 import { RoleComponent } from './RoleMaster/app.Role.component';
-import { AllRoleComponent } from './RoleMaster/app.AllRole.component';
-import { EditRoleComponent } from './RoleMaster/app.EditRole.component';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
 import { AllUserRegistrationComponent } from './CreateUsers/app.AllUserRegistration.Component';
 import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.Component';
@@ -86,8 +85,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       AllPlanMasterComponent,
       EditPlanComponent,
       RoleComponent,
-      AllRoleComponent,
-      EditRoleComponent,
       UserRegistrationComponent,
       AllUserRegistrationComponent,
       EditUserRegistrationComponent,
@@ -153,7 +150,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       AppRoutingModule,
     ],
     exports: [BsDatepickerModule],
-    providers: [DatePipe, AdminAuthGuardService,UserAuthGuardService,AgentAuthGuardService,
+    providers: [NotificationService,DatePipe, AdminAuthGuardService,UserAuthGuardService,AgentAuthGuardService,
      LoaderService,
      { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
