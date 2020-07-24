@@ -1,3 +1,152 @@
-<p>
-  Game works!
-</p>
+<hr>
+<mat-chip-list aria-label="Fish selection">
+  <mat-chip color="accent" selected>Add/Remove/Update Game</mat-chip>
+</mat-chip-list>
+<hr>
+<mat-card class="example-card">
+     
+    <mat-card-content>
+        <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" placeholder="Enter Game Name" class="form-control" name="GameName" [(ngModel)]="GameModel.GameName" maxlength="50"
+                        #refGameName="ngModel" id="GameName" required>
+                    <div *ngIf="!refGameName.valid  && (refGameName.dirty || refGameName.touched)" class="alert-danger">
+                        <div [hidden]="!refGameName.errors.required">
+                            Game Name is required
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <select required name="SchemeID" #refSchemeID="ngModel" class="form-control" 
+                      [(ngModel)]="GameModel.SchemeID">
+                      <option value=''>Please select Scheme</option>
+                      <option *ngFor="let scheme of SchemeList" [ngValue]="scheme.SchemeID">
+                          {{scheme.SchemeName}}
+                      </option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-12">
+                <input type="text" placeholder="Win Rate" readonly class="form-control" name="WinPer" [(ngModel)]="GameModel.GameName" maxlength="50"
+                    #refWinPer="ngModel" id="WinPer" required>
+                <!-- <div *ngIf="!refWinPer.valid  && (refWinPer.dirty || refWinPer.touched)" class="alert-danger">
+                    <div [hidden]="!refWinPer.errors.required">
+                        Win Rate is required
+                    </div>
+                </div> -->
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <input type="text" placeholder="Enter Start Time" class="form-control" name="StartTime" [(ngModel)]="GameModel.StartTime" maxlength="50"
+                  #refStartTime="ngModel" id="StartTime" required>
+              <div *ngIf="!refStartTime.valid  && (refStartTime.dirty || refStartTime.touched)" class="alert-danger">
+                  <div [hidden]="!refStartTime.errors.required">
+                    Start Time is required
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <input type="text" placeholder="Enter End Time" class="form-control" name="EndTime" [(ngModel)]="GameModel.EndTime" maxlength="50"
+                #refEndTime="ngModel" id="EndTime" required>
+            <div *ngIf="!refEndTime.valid  && (refEndTime.dirty || refEndTime.touched)" class="alert-danger">
+                <div [hidden]="!refEndTime.errors.required">
+                    End Time is required
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+                <div class="col-md-12">
+                    <label for="name"></label>
+                    <mat-checkbox type="checkbox" name="Status" [(ngModel)]="GameModel.Status" maxlength="50" #refStatus="ngModel"
+                        id="Status">Status</mat-checkbox>
+                    <div *ngIf="!refStatus.valid  && (refStatus.dirty || refStatus.touched)" class="alert-danger">
+                        <div [hidden]="!refStatus.errors.required">
+                            Status is required
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                    <button type="submit" color="primary" mat-raised-button [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
+                </div>
+              </div>
+            </div>
+        </form>
+
+   </mat-card-content>
+   </mat-card>
+
+   <hr>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="GameId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> GameId </th>
+          <td mat-cell *matCellDef="let element"> {{element.GameId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="GameName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Game Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.GameName}} </td>
+        </ng-container>
+        <!-- GameName Column -->
+        <ng-container matColumnDef="SchemeName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Scheme Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.SchemeName}} </td>
+        </ng-container>
+        <!-- Status Column -->
+        <ng-container matColumnDef="WinPer">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Win Rate </th>
+          <td mat-cell *matCellDef="let element"> {{element.WinPer}} </td>
+        </ng-container>
+        <!-- Win Rate Column -->
+        <ng-container matColumnDef="StartTime">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> StartTime </th>
+          <td mat-cell *matCellDef="let element"> {{element.StartTime}} </td>
+        </ng-container>
+        <!-- Start Time Column -->
+        <ng-container matColumnDef="EndTime">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> EndTime </th>
+          <td mat-cell *matCellDef="let element"> {{element.EndTime}} </td>
+        </ng-container>
+        <!-- EndTime Column -->
+        <ng-container matColumnDef="EditAction">
+          <th mat-header-cell *matHeaderCellDef>Edit Action </th>
+          <td mat-cell *matCellDef="let element"> 
+            <button mat-raised-button color="primary" (click)="Edit(element.GameId)">Edit</button> </td>
+        </ng-container>
+        <!-- Edit Column -->
+        <ng-container matColumnDef="DeleteAction">
+          <th mat-header-cell *matHeaderCellDef> Delete Action </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button color="warn" (click)="Delete(element.GameId)">Delete</button>
+          </td>
+        </ng-container>
+        <!-- Delete Column -->
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>

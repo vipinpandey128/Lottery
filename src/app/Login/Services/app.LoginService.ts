@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/Notification.service';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs'
 import { catchError, tap } from 'rxjs/operators'
@@ -12,13 +13,8 @@ import { MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@an
 })
 
 export class LoginService {
-    verticalPosition: MatSnackBarVerticalPosition = 'top';
     public token: string;
-    actionButtonLabel: string = 'Retry';
-    action: boolean = false;
-    setAutoHide: boolean = true;
-    autoHide: number = 2000;
-    constructor(private _http: HttpClient,public snackBar: MatSnackBar, private _Route: Router)
+    constructor(private _http: HttpClient,public snackBar: NotificationService, private _Route: Router)
     {
 
     }
@@ -60,22 +56,19 @@ export class LoginService {
     }
 
     private handleError(error: HttpErrorResponse) {
-        let config = new MatSnackBarConfig();
-            config.duration = this.setAutoHide ? this.autoHide : 0;
-            config.verticalPosition = this.verticalPosition;
           
         if (error.error instanceof ErrorEvent) {
-              this.snackBar.open("An error occurred: "+error.error.message, this.action ? this.actionButtonLabel : undefined, config);
+              this.snackBar.openSnackBar("An error occurred: "+error.error.message);
             // A client-side or network error occurred. Handle it accordingly.
             console.error('An error occurred:', error.error.message);
         } else {
-            this.snackBar.open("Connection was refused!! please check server side..", this.action ? this.actionButtonLabel : undefined, config);
+            this.snackBar.openSnackBar("Connection was refused!! please check server side..");
 
             // The backend returned an unsuccessful response code.
             // The response body may contain clues as to what went wrong,
             console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
         }
-        this.snackBar.open("Something bad happened; please try again later.", this.action ? this.actionButtonLabel : undefined, config);
+        this.snackBar.openSnackBar("Something bad happened; please try again later.");
 
         // return an observable with a user-facing error message
         return throwError('Something bad happened; please try again later.');

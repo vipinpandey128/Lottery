@@ -71,6 +71,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { IpAddressService } from './services/IpAddress.service';
 
 @NgModule({
   declarations: [
@@ -148,7 +149,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ],
     exports: [BsDatepickerModule],
     providers: [NotificationService,DatePipe, AdminAuthGuardService,UserAuthGuardService,AgentAuthGuardService,
-     LoaderService,
+     LoaderService,IpAddressService,
      { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
     bootstrap: [AppComponent]
