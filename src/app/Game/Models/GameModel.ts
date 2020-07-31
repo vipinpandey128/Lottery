@@ -4,9 +4,8 @@ export class GameModel {
     GameId:Number;
     GameName='';
     SchemeName='';
-    WinPer:Number;
     StartTime='';
     EndTime='';
-    Status:Boolean;
+    IsActive:Boolean;
     SchemeID:Number;
 }

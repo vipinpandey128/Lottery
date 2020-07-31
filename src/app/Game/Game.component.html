@@ -30,20 +30,9 @@
                   </select>
               </div>
             </div>
-            <div class="form-group">
-              <div class="col-md-12">
-                <input type="text" placeholder="Win Rate" readonly class="form-control" name="WinPer" [(ngModel)]="GameModel.GameName" maxlength="50"
-                    #refWinPer="ngModel" id="WinPer" required>
-                <!-- <div *ngIf="!refWinPer.valid  && (refWinPer.dirty || refWinPer.touched)" class="alert-danger">
-                    <div [hidden]="!refWinPer.errors.required">
-                        Win Rate is required
-                    </div>
-                </div> -->
-            </div>
-          </div>
           <div class="form-group">
             <div class="col-md-12">
-              <input type="text" placeholder="Enter Start Time" class="form-control" name="StartTime" [(ngModel)]="GameModel.StartTime" maxlength="50"
+              <input type="time" placeholder="Enter Start Time" class="form-control" name="StartTime" [(ngModel)]="GameModel.StartTime"
                   #refStartTime="ngModel" id="StartTime" required>
               <div *ngIf="!refStartTime.valid  && (refStartTime.dirty || refStartTime.touched)" class="alert-danger">
                   <div [hidden]="!refStartTime.errors.required">
@@ -54,7 +43,7 @@
         </div>
         <div class="form-group">
           <div class="col-md-12">
-            <input type="text" placeholder="Enter End Time" class="form-control" name="EndTime" [(ngModel)]="GameModel.EndTime" maxlength="50"
+            <input type="time" placeholder="Enter End Time" class="form-control" name="EndTime" [(ngModel)]="GameModel.EndTime"
                 #refEndTime="ngModel" id="EndTime" required>
             <div *ngIf="!refEndTime.valid  && (refEndTime.dirty || refEndTime.touched)" class="alert-danger">
                 <div [hidden]="!refEndTime.errors.required">
@@ -66,10 +55,10 @@
       <div class="form-group">
                 <div class="col-md-12">
                     <label for="name"></label>
-                    <mat-checkbox type="checkbox" name="Status" [(ngModel)]="GameModel.Status" maxlength="50" #refStatus="ngModel"
-                        id="Status">Status</mat-checkbox>
-                    <div *ngIf="!refStatus.valid  && (refStatus.dirty || refStatus.touched)" class="alert-danger">
-                        <div [hidden]="!refStatus.errors.required">
+                    <mat-checkbox type="checkbox" name="IsActive" [(ngModel)]="GameModel.IsActive" #refIsActive="ngModel"
+                        id="IsActive">Status</mat-checkbox>
+                    <div *ngIf="!refIsActive.valid  && (refIsActive.dirty || refIsActive.touched)" class="alert-danger">
+                        <div [hidden]="!refIsActive.errors.required">
                             Status is required
                         </div>
                     </div>
@@ -146,7 +135,13 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+      <mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="pageEvent = $event">
+      </mat-paginator>
+
     </div>
   </div>
 </div>

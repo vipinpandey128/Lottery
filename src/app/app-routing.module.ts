@@ -5,9 +5,7 @@ import { RoleComponent } from './RoleMaster/app.Role.component';
 import { AdminAuthGuardService } from './AuthGuard/AdminAuthGuardService';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
 import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.Component';
-import { AllUserRegistrationComponent } from './CreateUsers/app.AllUserRegistration.Component';
 import { AssignRoleComponent } from './AssignRole/app.AssignRole.Component';
-import { AllAssignRoleComponent } from './AssignRole/app.AllAssignRole.component';
 import { SchemeComponent } from './SchemeMasters/app.Scheme.Component';
 import { GameComponent } from './Game/Game.component';
 import { AddMoneyComponent } from './AddMoney/AddMoney.component';
@@ -43,15 +41,13 @@ const routes: Routes = [
       children: [
         { path: 'Add', component: UserRegistrationComponent , canActivate: [AdminAuthGuardService] },
         { path: 'Edit/:UserId', component: EditUserRegistrationComponent , canActivate: [AdminAuthGuardService] },
-        { path: 'All', component: AllUserRegistrationComponent, canActivate: [AdminAuthGuardService]  }
       ]
     },
     {
       path: 'Assign',
       component: AppAdminLayoutComponent,
       children: [
-        { path: 'Role', component: AssignRoleComponent , canActivate: [AdminAuthGuardService] },
-        { path: 'AllRole', component: AllAssignRoleComponent , canActivate: [AdminAuthGuardService] }
+        { path: 'Role', component: AssignRoleComponent , canActivate: [AdminAuthGuardService] }
       ]
     },
   {

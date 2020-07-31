@@ -15,7 +15,8 @@ export class MyLoaderComponent implements OnInit,OnDestroy {
     "../../../assets/loader1.svg",
     "../../../assets/loader2.svg",
     "../../../assets/loader3.svg",
-    "../../../assets/loader4.svg"
+    "../../../assets/loader4.svg",
+    "../../../assets/loader5.svg"
   ];
   srcLoader:Subscription;
 

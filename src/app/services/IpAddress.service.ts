@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class IpAddressService {
 
-  constructor(private http:HttpClient) { }  
+  constructor(private http: HttpClient) {
+     
+  }
+
   public getIPAddress()  
   {  
     return this.http.get("http://api.ipify.org/?format=json");  
   } 
+  
+
+ 
 
 }

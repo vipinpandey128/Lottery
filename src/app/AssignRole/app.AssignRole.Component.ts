@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AssignRemoveModel } from './Models/AssignRemoveModel';
 import { UserService } from '../CreateUsers/Services/app.UserRegistration.Service';
 import { UserDropdownModel } from '../CreateUsers/Models/app.UserDropdownModel';
@@ -6,6 +6,10 @@ import { RoleService } from '../RoleMaster/Services/app.role.Service';
 import { RoleModel } from '../RoleMaster/Models/app.RoleModel';
 import { AssignandRemoveRoleService } from './Services/app.AssignandRemoveRole.Service';
 import { Router } from '@angular/router';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { AssignRolesViewModel } from './Models/AssignRolesViewModel';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
     templateUrl: './app.AssignandRemoveRole.html',
@@ -23,6 +27,12 @@ export class AssignRoleComponent implements OnInit {
     buttonType : any;
     errorMessage: any;
     output: any;
+    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    displayedColumns: string[] = ['RoleName', 'UserName'];
+    dataSource: any;
+    AssignModel : AssignRolesViewModel[]
+    offset: any;
     constructor(private userservice: UserService ,
         private roleservice :RoleService,
         private assignandremoverolerervice : AssignandRemoveRoleService,
@@ -46,6 +56,17 @@ export class AssignRoleComponent implements OnInit {
         this._roleservice.GetAllRole().subscribe(
             allroles => {
                 this.RoleList = allroles
+            },
+            error => this.errorMessage = <any>error
+        );
+
+        this._assignandremoveservice.GetAllAssignedRoles().subscribe(
+            assignModel => 
+            {
+   
+                this.dataSource = new MatTableDataSource(assignModel);
+                this.dataSource.sort = this.sort;
+                this.dataSource.paginator = this.paginator;
             },
             error => this.errorMessage = <any>error
         );
@@ -94,4 +115,15 @@ export class AssignRoleComponent implements OnInit {
         }
 
 }
+
+applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getNext(event: PageEvent) {
+    this.offset = event.pageSize * event.pageIndex
+    // call your api function here with the offset
+    console.log(event.pageSize);
+    console.log(event.pageIndex);
+  }
 }

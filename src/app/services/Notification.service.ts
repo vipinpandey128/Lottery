@@ -22,6 +22,7 @@ private snackBarConfig: MatSnackBarConfig;
     let config = new MatSnackBarConfig();
     config.duration = this.setAutoHide ? this.autoHide : 0;
     config.verticalPosition = this.verticalPosition;
+    config.panelClass = 'center';
     this.snackBar.open(
       message,
       this.action ? this.actionButtonLabel : undefined,

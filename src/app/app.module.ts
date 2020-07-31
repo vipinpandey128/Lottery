@@ -21,10 +21,8 @@ import { AllPlanMasterComponent } from './PlanMaster/app.allplanmaster.component
 import { EditPlanComponent } from './PlanMaster/app.EditPlan.component';
 import { RoleComponent } from './RoleMaster/app.Role.component';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
-import { AllUserRegistrationComponent } from './CreateUsers/app.AllUserRegistration.Component';
 import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.Component';
 import { AssignRoleComponent } from './AssignRole/app.AssignRole.Component';
-import { AllAssignRoleComponent } from './AssignRole/app.AllAssignRole.component';
 import { PaymentOverviewComponent } from './Payment/List/app.PaymentOverviewComponent';
 import { PaymentListComponent } from './Payment/List/app.PaymentListComponent';
 import { LoginComponent } from './Login/app.LoginComponent';
@@ -84,10 +82,8 @@ import { IpAddressService } from './services/IpAddress.service';
       EditPlanComponent,
       RoleComponent,
       UserRegistrationComponent,
-      AllUserRegistrationComponent,
       EditUserRegistrationComponent,
       AssignRoleComponent,
-      AllAssignRoleComponent,
       PaymentOverviewComponent,
       PaymentListComponent,
       LoginComponent,

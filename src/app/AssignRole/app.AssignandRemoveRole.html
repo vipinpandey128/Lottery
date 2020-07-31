@@ -1,46 +1,65 @@
-<h4>Assign / Remove Role</h4>
+
 <hr>
-<div class="panel panel-default">
-    <div class="panel-heading">Assign / Remove Role</div>
-    <div class="panel-body">
-        <form #f="ngForm" (ngSubmit)="onSubmit(buttonType)" novalidate>
-            <div class="col-md-6">
-                <label>User</label>
-                <select required name="UserId" #refUserId="ngModel"  class="form-control"
-                    [(ngModel)]="AssignRemoveModel.UserId">
-                    <option value=''>Please select User</option>
-                    <option *ngFor="let user of UserList" [ngValue]="user.UserId">
-                        {{user.UserName}}
-                    </option>
-                </select>
-                <!-- <div *ngIf="!refUserId.valid  && (refUserId.dirty || refUserId.touched)" class="alert alert-danger">
-                    <div [hidden]="!refUserId.errors.required">
-                        Users is required
+<mat-chip-list aria-label="Fish selection">
+  <mat-chip color="accent" selected>Add/Remove/Update Role</mat-chip>
+</mat-chip-list>
+<hr>
+                <form #f="ngForm" (ngSubmit)="onSubmit(buttonType)" novalidate>
+                    <div class="col-md-3">
+                        <label>User</label>
+                        <select required name="UserId" #refUserId="ngModel"  class="form-control"
+                            [(ngModel)]="AssignRemoveModel.UserId">
+                            <option value=''>Please select User</option>
+                            <option *ngFor="let user of UserList" [ngValue]="user.UserId">
+                                {{user.UserName}}
+                            </option>
+                        </select>
                     </div>
-                </div> -->
-            </div>
-            <div class="col-md-6">
-                <label>Role</label>
-                <select required name="RoleId" #refRoleId="ngModel" class="form-control" 
-                    [(ngModel)]="AssignRemoveModel.RoleId">
-                    <option value=''>Please select Role</option>
-                    <option *ngFor="let role of RoleList" [ngValue]="role.RoleId">
-                        {{role.RoleName}}
-                    </option>
-                </select>
-                <!-- <div *ngIf="!refRoleId.valid  && (refRoleId.dirty || refRoleId.touched)" class="alert alert-danger">
-                    <div [hidden]="!refRoleId.errors.required">
-                        Role is required
+                    <div class="col-md-3">
+                        <label>Role</label>
+                        <select required name="RoleId" #refRoleId="ngModel" class="form-control" 
+                            [(ngModel)]="AssignRemoveModel.RoleId">
+                            <option value=''>Please select Role</option>
+                            <option *ngFor="let role of RoleList" [ngValue]="role.RoleId">
+                                {{role.RoleName}}
+                            </option>
+                        </select>
                     </div>
-                </div> -->
-            </div>
-            <div class="col-md-8">
-                <button mat-raised-button type="submit" (click)="onSubmit('onAssign')" style="margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-success">Assign Role</button>
-                <button mat-raised-button type="submit" (click)="onSubmit('onRemove')"  style="margin-left: 10px; margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-danger">Remove Role</button>
-                <a mat-raised-button style="margin-left: 10px; margin-top:7px;" class="btn btn-info" [routerLink]="['/Assign/AllRole']">
-                    All Assign Role </a>
-            </div>
-            
-        </form>
+                    <div class="col-md-3">
+                        <button mat-raised-button type="submit" (click)="onSubmit('onAssign')" style="margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-success">Assign Role</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button mat-raised-button type="submit" (click)="onSubmit('onRemove')"  style="margin-left: 10px; margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-danger">Remove Role</button>
+                    </div>
+                </form>
+   
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="example-header">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource"  matSort class="mat-elevation-z8">
+                <ng-container matColumnDef="UserName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> UserName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.UserName}} </td>
+                </ng-container>
+                <!-- SchemeID Column -->
+                <ng-container matColumnDef="RoleName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> RoleName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.RoleName}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageIndex]=0
+            [pageSize]=5
+            (page)="getNext($event)" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
     </div>
 </div>
+ 

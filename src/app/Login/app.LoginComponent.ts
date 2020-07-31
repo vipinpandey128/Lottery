@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     localStorage.clear();
     this._ip.getIPAddress().subscribe((res:any)=>{  
       this.ipAddress=res.ip;
-      console.log(res.ip); 
+     // console.log(res.ip); 
     }); 
   }
 

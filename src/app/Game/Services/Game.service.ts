@@ -46,11 +46,11 @@ export class GameService {
   }
 
   // Get By ID games
-  public getGameByID(gameId:number) {
-    let apiUrl = environment.apiEndpoint + gameId;
+  public getGameByID(gameId) {
+    
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-    return this.http.get<any>(apiUrl, { headers: headers })
+    return this.http.get<any>(this.apiUrl+gameId, { headers: headers })
       .pipe(
         catchError(this.handleError)
       );
@@ -67,10 +67,10 @@ export class GameService {
   }
 
   // Update Game
-  public UpdateGame(assignmodel: GameModel) {
+  public UpdateGame(gameModel: GameModel) {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-    return this.http.put<any>(this.apiUrl+assignmodel.GameId, assignmodel, { headers: headers })
+    return this.http.put<any>(this.apiUrl+gameModel.GameId, gameModel, { headers: headers })
       .pipe(
         catchError(this.handleError)
       );

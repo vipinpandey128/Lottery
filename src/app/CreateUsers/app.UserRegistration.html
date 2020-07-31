@@ -1,11 +1,14 @@
-<h4>Add System User</h4>
 <hr>
+<mat-chip-list aria-label="Fish selection">
+    <mat-chip color="accent" selected>User Registration</mat-chip>
+  </mat-chip-list>
+
+<mat-card><mat-card-content>
 <div class="panel panel-default">
-    <div class="panel-heading">Add User</div>
     <div class="panel-body">
         <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="name">UserName</label>
                     <input type="text" class="form-control" autocomplete="off" name="UserName" [(ngModel)]="UserModel.UserName" maxlength="50"
                         #refUserName="ngModel" id="UserName" required>
@@ -15,7 +18,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="name">FullName</label>
                     <input type="text" class="form-control" name="FullName" maxlength="50" [(ngModel)]="UserModel.FullName" maxlength="50"
                         #refFullName="ngModel" id="FullName" required>
@@ -25,20 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <label for="name">EmailId</label>
-                    <input type="text" class="form-control" maxlength="50" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="EmailId" [(ngModel)]="UserModel.EmailId" maxlength="50"
-                        #refEmailId="ngModel" id="EmailId" required>
-                    <div *ngIf="!refEmailId.valid  && (refEmailId.dirty || refEmailId.touched)" class="alert alert-danger">
-                        <div [hidden]="!refEmailId.errors.required">
-                            EmailId is required
-                        </div>
-                        <div  *ngIf="refEmailId.errors && refEmailId.errors.pattern">
-                            EmailId is invalid
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="name">Contactno</label>
                     <input type="text" class="form-control" name="Contactno" [(ngModel)]="UserModel.Contactno"
                         maxlength="10" #refContactno="ngModel" id="Contactno" required>
@@ -48,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="name">Password</label>
                     <input type="password" class="form-control" name="Password" [(ngModel)]="UserModel.Password"
                         maxlength="50" #refPassword="ngModel" id="Password" required>
@@ -58,8 +48,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <mat-checkbox type="checkbox" name="Status" [(ngModel)]="UserModel.Status" maxlength="50" #refStatus="ngModel"
+                <div class="col-md-2">
+                    <mat-checkbox type="checkbox" style="margin-top: 33px;" name="Status" [(ngModel)]="UserModel.Status" #refStatus="ngModel"
                         id="Status">Status</mat-checkbox>
                     <div *ngIf="!refStatus.valid  && (refStatus.dirty || refStatus.touched)" class="alert alert-danger">
                         <div [hidden]="!refStatus.errors.required">
@@ -68,13 +58,10 @@
                     </div>
                 </div>
                 <div class="col-md-1">
-                    <button mat-raised-button color="primary" type="submit" style="margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
+                    <button mat-raised-button color="primary" type="submit" style="margin-top: 27px" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
                    
                 </div>
-                <div class="col-md-1">
-                    <a mat-raised-button color="accent" style="margin-left: 10px; margin-top:7px;" class="btn btn-info" [routerLink]="['/User/All']">
-                        All Users </a>
-                </div>
+                 
 
 
             </div>
@@ -82,3 +69,67 @@
 
     </div>
 </div>
+</mat-card-content>
+</mat-card>
+
+
+<mat-card>
+    <mat-card-content>
+    <div class="col-md-12">
+        <div class="example-header">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                <!-- SchemeID Column -->
+                <ng-container matColumnDef="Id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> UserId </th>
+                    <td mat-cell *matCellDef="let element"> {{element.UserId}} </td>
+                </ng-container>
+                <!-- SchemeName Column -->
+                <ng-container matColumnDef="UserName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> UserName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.UserName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="FullName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> FullName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.FullName}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Contactno">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Contactno </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Contactno}} </td>
+                </ng-container>
+                <!-- Status Column -->
+                <ng-container matColumnDef="Status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Status== true ? "Active": "DeActive"}}  </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="EditAction">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <a  mat-raised-button color="primary" [routerLink]="['/User/Edit/',element.UserId]">
+                            Edit</a> </td>
+                </ng-container>
+                <!-- DeleteAction Column -->
+                <ng-container matColumnDef="DeleteAction">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-raised-button class="red" class="btn btn-sm btn-danger" (click)="Delete(element.UserId)"><span class="material-icons">
+                            delete
+                            </span></button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+    </mat-card-content>
+</mat-card>

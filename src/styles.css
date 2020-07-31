@@ -162,4 +162,15 @@
       border-color: #f5c6cb;
   }
     
-  
+  .center {
+    justify-content: center;
+ }
+ .center > .mat-simple-snackbar {
+  justify-content: center;
+  color:white;
+}
+
+.mat-checkbox-layout
+{
+  margin-top: 29px;
+}

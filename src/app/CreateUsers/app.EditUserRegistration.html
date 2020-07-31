@@ -26,19 +26,6 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="name">EmailId</label>
-                    <input type="text" class="form-control" maxlength="50" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="EmailId" [(ngModel)]="UserModel.EmailId" maxlength="50"
-                        #refEmailId="ngModel" id="EmailId" required>
-                    <div *ngIf="!refEmailId.valid  && (refEmailId.dirty || refEmailId.touched)" class="alert alert-danger">
-                        <div [hidden]="!refEmailId.errors.required">
-                            EmailId is required
-                        </div>
-                        <div  *ngIf="refEmailId.errors && refEmailId.errors.pattern">
-                            EmailId is invalid
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
                     <label for="name">Contactno</label>
                     <input type="text" class="form-control" name="Contactno" [(ngModel)]="UserModel.Contactno"
                         maxlength="50" #refContactno="ngModel" id="Contactno" required>

@@ -1,3 +1,155 @@
-<p>
-  AddMoney works!
-</p>
+<hr>
+<mat-chip-list aria-label="Fish selection">
+  <mat-chip color="accent" selected>Deposit/Withdrawal Game</mat-chip>
+</mat-chip-list>
+<hr>
+<mat-card class="example-card">
+    <mat-card-content>
+        <form #f="ngForm" novalidate>
+            <div class="row">
+              <div class="form-group">
+                <div class="col-md-12">
+                  <select required name="searchValue" id="searchValue" #refsearchValue="ngModel"  class="form-control" name="searchValue" 
+                      [(ngModel)]="searchValue" required>
+                      <option *ngFor="let filter of searchType; let i= index" [ngValue]="i">
+                          {{filter}}
+                      </option>
+                  </select>
+              </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" placeholder="Search" class="form-control" name="userData" [(ngModel)]="userData" maxlength="50"
+                        #refuserData="ngModel" id="userData" required>
+                    <div *ngIf="!refuserData.valid  && (refuserData.dirty || refuserData.touched)" class="alert-danger">
+                        <div [hidden]="!refuserData.errors.required">
+                            Enter User Details
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <button mat-raised-button type="submit" (click)="onSubmit()" [disabled]="!f.form.valid" class="btn btn-success">Search</button>
+                </div>
+              </div>
+            </div>
+              
+        </form>
+
+   </mat-card-content>
+   </mat-card>
+
+   <mat-divider></mat-divider>
+   <mat-card class="example-card">
+    <mat-card-content>
+        <form #f="ngForm" novalidate>
+            <div class="row">
+              <div class="form-group">
+                <div class="col-md-12">
+                    <label>User Name</label>
+                    <input type="text" disabled placeholder="User Name" class="form-control" name="UserName" [(ngModel)]="userModel.UserName" maxlength="50"
+                        #refUserName="ngModel" id="UserName" required>
+                    <div *ngIf="!refUserName.valid  && (refUserName.dirty || refUserName.touched)" class="alert-danger">
+                        <div [hidden]="!refUserName.errors.required">
+                            Enter User Name
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                    <label>Full Name</label>
+                    <input type="text" disabled placeholder="Full Name" class="form-control" name="FullName" [(ngModel)]="userModel.FullName" maxlength="50"
+                        #refFullName="ngModel" id="userData" required>
+                    <div *ngIf="!refFullName.valid  && (refFullName.dirty || refFullName.touched)" class="alert-danger">
+                        <div [hidden]="!refFullName.errors.required">
+                            Enter Full Name
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                    <label>Contact Number</label>
+                    <input type="number" disabled placeholder="Contact Number" class="form-control" name="Contactno" [(ngModel)]="userModel.Contactno" maxlength="50"
+                        #refContactno="ngModel" id="Contactno" required>
+                    <div *ngIf="!refContactno.valid  && (refContactno.dirty || refContactno.touched)" class="alert-danger">
+                        <div [hidden]="!refContactno.errors.required">
+                            Enter Contact Number
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                    <label>Current Balance</label>
+                    <input type="text" disabled placeholder="Current Balance" class="form-control" name="CurrentBal" [(ngModel)]="userModel.CurrentBal" maxlength="50"
+                        #refCurrentBal="ngModel" id="CurrentBal" required>
+                    <div *ngIf="!refCurrentBal.valid  && (refCurrentBal.dirty || refCurrentBal.touched)" class="alert-danger">
+                        <div [hidden]="!refCurrentBal.errors.required">
+                            Current Balance
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                    <label>User Status</label>
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip color="accent" selected>{{userModel.Status?'Active':'Deacivated'}}</mat-chip>
+                    </mat-chip-list>
+                </div>
+              </div>
+               
+            </div>
+              
+        </form>
+
+   </mat-card-content>
+   </mat-card>
+   <mat-divider></mat-divider>
+
+   <mat-card class="example-card">
+    <mat-card-content>
+        <form novalidate>
+            <div class="row">
+              <div class="form-group">
+                <div class="col-md-12">
+                    <label>Withdrawal/Deposit Amount</label>
+                    <input type="number" placeholder="Withdrawal/Deposit Amount" class="form-control" name="TransactionAmount" [(ngModel)]="transactionModel.TransactionAmount"
+                        #reftransactionAmount="ngModel" id="transactionAmount" required>
+                    <div *ngIf="!reftransactionAmount.valid  && (reftransactionAmount.dirty || reftransactionAmount.touched)" class="alert-danger">
+                        <div [hidden]="!reftransactionAmount.errors.required">
+                            Enter Withdrawal/Deposit Amount
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                    <label>Select Transaction Type</label>
+                  <select required name="transactionTypeValue" id="transactionTypeValue" #reftransactionTypeValue="ngModel"  class="form-control" name="transactionTypeValue" 
+                      [(ngModel)]="transactionModel.TransactionTypeId" required>
+                    <option value="" selected>Select Transaction Type</option>
+                      <option *ngFor="let filter of transactionType;" [ngValue]="filter.TransationTypeId">
+                          {{filter.TransactionTypeName}}
+                      </option>
+                      
+                  </select>
+              </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                    <label></label>
+                  <button mat-raised-button type="submit" style="margin-top: 27px;" (click)="saveAmount()" color="accent" class="btn btn-success">Save Amount</button>
+                </div>
+              </div>
+            </div>
+        </form>
+
+   </mat-card-content>
+   </mat-card>
+
+
+ 
