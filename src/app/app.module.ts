@@ -1,44 +1,33 @@
+import { AngularMaterialModule } from './module/angular-material.module';
+import { DialogBalComponent } from './components/my-loader/dialog-bal/dialog-bal.component';
 import { NotificationService } from './services/Notification.service';
 import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 import { AgentAuthGuardService } from './AuthGuard/AgentAuthGuardService';
 import { BetComponent } from './Bet/Bet.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatChipsModule} from '@angular/material/chips';
-import { BsDatepickerModule, } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AppComponent } from './app.component';
 import { SchemeComponent } from './SchemeMasters/app.Scheme.Component';
-import { PlanMasterComponent } from './PlanMaster/app.planmaster.component';
-import { AllPlanMasterComponent } from './PlanMaster/app.allplanmaster.component';
-import { EditPlanComponent } from './PlanMaster/app.EditPlan.component';
 import { RoleComponent } from './RoleMaster/app.Role.component';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
 import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.Component';
 import { AssignRoleComponent } from './AssignRole/app.AssignRole.Component';
-import { PaymentOverviewComponent } from './Payment/List/app.PaymentOverviewComponent';
-import { PaymentListComponent } from './Payment/List/app.PaymentListComponent';
 import { LoginComponent } from './Login/app.LoginComponent';
 import { AppAdminLayoutComponent } from './_layout/app-adminlayout.component';
 import { UserDashboardComponent } from './UserDashboard/app.UserDashboardComponent';
 import { AdminDashboardComponent } from './AdminDashboard/app.AdminDashboardComponent';
-import { MemberDetailsReportComponent } from './Reports/app.MemberDetailsReport.Component';
-import { YearwiseReportComponent } from './Reports/app.YearwiseReport.Component';
-import { MonthwiseReportComponent } from './Reports/app.MonthwiseReport.Component';
-import { RenewalReportComponent } from './Reports/app.RenewalReport.Component';
 import { AppUserLayoutComponent } from './_layout/app-userlayout.component';
 import { AdminLogoutComponent } from './Login/app.AdminLogout.Component';
 import { UserLogoutComponent } from './Login/app.UserLogout.Component';
 import { AdminAuthGuardService } from './AuthGuard/AdminAuthGuardService';
 import { UserAuthGuardService } from './AuthGuard/UserAuthGuardService';
-import { GenerateRecepitComponent } from './Recepit/app.generateRecepit.Component';
 import { AddMoneyComponent } from './AddMoney/AddMoney.component';
 import { DepositMoneyComponent } from './DepositMoney/DepositMoney.component';
 import { AgentDashboardComponent } from './AgentDashboard/AgentDashboard.component';
@@ -47,107 +36,75 @@ import { UserTransactionComponent } from './UserTransaction/UserTransaction.comp
 import { AgentTransactionComponent } from './AgentTransaction/AgentTransaction.component';
 import { AdminTransactionComponent } from './AdminTransaction/AdminTransaction.component';
 import { AllTransactionComponent } from './AllTransaction/AllTransaction.component';
-import { AgentLogoutComponent } from './Login/agent-logout.component';
 import { GameComponent } from './Game/Game.component';
 import { AgentUserComponent } from './AgentUser/AgentUser.component';
 import { AppAgentLayoutComponent } from './_layout/app-agent-layout.component';
-import { MyLoaderComponent } from './components/my-loader/my-loader.component';  
+import { MyLoaderComponent } from './components/my-loader/my-loader.component';
 import { LoaderService } from './services/loader.service';
 import { WithdrawalComponent } from './withdrawal/withdrawal.component';
-import { MatSortModule } from '@angular/material/sort';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatCardModule } from '@angular/material/card';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { IpAddressService } from './services/IpAddress.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-      AppAdminLayoutComponent,
-      AppUserLayoutComponent,
-      SchemeComponent,
-      PlanMasterComponent,
-      AllPlanMasterComponent,
-      EditPlanComponent,
-      RoleComponent,
-      UserRegistrationComponent,
-      EditUserRegistrationComponent,
-      AssignRoleComponent,
-      PaymentOverviewComponent,
-      PaymentListComponent,
-      LoginComponent,
-      AdminLogoutComponent,
-      UserLogoutComponent,
-      UserDashboardComponent,
-      AdminDashboardComponent,
-      MemberDetailsReportComponent,
-      YearwiseReportComponent,
-      MonthwiseReportComponent,
-      RenewalReportComponent,
-      GenerateRecepitComponent,
-      AddMoneyComponent,
-      DepositMoneyComponent,
-      AgentDashboardComponent,
-      ProfileComponent,
-      UserTransactionComponent,
-      AgentTransactionComponent,
-      AdminTransactionComponent,
-      AllTransactionComponent,
-      GameComponent,
-      BetComponent,
-      AgentUserComponent,
-      AppAgentLayoutComponent,
-      MyLoaderComponent,
-      WithdrawalComponent
+    AppAdminLayoutComponent,
+    AppUserLayoutComponent,
+    SchemeComponent,
+    RoleComponent,
+    UserRegistrationComponent,
+    EditUserRegistrationComponent,
+    AssignRoleComponent,
+    LoginComponent,
+    AdminLogoutComponent,
+    UserLogoutComponent,
+    UserDashboardComponent,
+    AdminDashboardComponent,
+    AddMoneyComponent,
+    DepositMoneyComponent,
+    AgentDashboardComponent,
+    ProfileComponent,
+    UserTransactionComponent,
+    AgentTransactionComponent,
+    AdminTransactionComponent,
+    AllTransactionComponent,
+    GameComponent,
+    BetComponent,
+    AgentUserComponent,
+    AppAgentLayoutComponent,
+    MyLoaderComponent,
+    WithdrawalComponent,
+    
+    DialogBalComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
-      BrowserAnimationsModule,
-      AppRoutingModule,
-      FormsModule,
-      AppRoutingModule,
-      HttpClientModule,
-      BsDatepickerModule.forRoot(),
-      MatTableModule,
-      MatAutocompleteModule,
-      MatSortModule,
-      MatPaginatorModule,
-      MatCheckboxModule,
-      MatFormFieldModule,
-      MatCardModule,
-      MatInputModule,
-      MatSnackBarModule,
-      MatChipsModule,
-      BrowserModule,
-      BrowserAnimationsModule,
-      FormsModule,
-      MatInputModule,
-      MatButtonModule,
-      MatSelectModule,
-      MatIconModule,
-      MatToolbarModule,
-      MatSidenavModule,
-      MatListModule,
-      MatProgressBarModule,
-      MatProgressSpinnerModule,
-      AppRoutingModule,
-    ],
-    exports: [BsDatepickerModule],
-    providers: [NotificationService,DatePipe, AdminAuthGuardService,UserAuthGuardService,AgentAuthGuardService,
-     LoaderService,IpAddressService,
-     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BsDatepickerModule.forRoot(),
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    AppRoutingModule,
+    AngularMaterialModule,
   ],
-    bootstrap: [AppComponent]
-  })
-  export class AppModule { }
+  exports: [BsDatepickerModule],
+  providers: [
+    NotificationService,
+    DatePipe,
+    AdminAuthGuardService,
+    UserAuthGuardService,
+    AgentAuthGuardService,
+    LoaderService,
+    IpAddressService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [DialogBalComponent],
+})
+export class AppModule {}

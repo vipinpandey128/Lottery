@@ -1,4 +1,3 @@
-import { EditPlanComponent } from './../PlanMaster/app.EditPlan.component';
 import { NotificationService } from './../services/Notification.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SchemeMasterModel } from './app.SchemeModel';

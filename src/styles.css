@@ -174,3 +174,6 @@
 {
   margin-top: 29px;
 }
+.mat-sort-header-content{
+  font-weight: bold !important;
+}

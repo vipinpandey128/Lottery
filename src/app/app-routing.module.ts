@@ -87,7 +87,7 @@ const routes: Routes = [
         { path: 'View', component: AllTransactionComponent , canActivate: [AdminAuthGuardService]  }
 
       ]
-    },
+    } ,
     {
       path: 'Profile',
       component: AppAdminLayoutComponent,
