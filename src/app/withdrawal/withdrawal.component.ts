@@ -1,4 +1,3 @@
-import { DialogBalComponent } from './../components/my-loader/dialog-bal/dialog-bal.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserModel } from '../CreateUsers/Models/app.UserModel';
 import { MatSort } from '@angular/material/sort';
@@ -9,6 +8,7 @@ import { NotificationService } from '../services/Notification.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { _agentUserService } from '../AgentUser/service/_agentUser.service';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { DialogBalComponent } from '../components/my-loader/dialog-bal.component';
 
 @Component({
   selector: 'app-withdrawal',

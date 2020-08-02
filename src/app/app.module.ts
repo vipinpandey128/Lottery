@@ -1,5 +1,4 @@
 import { AngularMaterialModule } from './module/angular-material.module';
-import { DialogBalComponent } from './components/my-loader/dialog-bal/dialog-bal.component';
 import { NotificationService } from './services/Notification.service';
 import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 import { AgentAuthGuardService } from './AuthGuard/AgentAuthGuardService';
@@ -43,6 +42,7 @@ import { MyLoaderComponent } from './components/my-loader/my-loader.component';
 import { LoaderService } from './services/loader.service';
 import { WithdrawalComponent } from './withdrawal/withdrawal.component';
 import { IpAddressService } from './services/IpAddress.service';
+import { DialogBalComponent } from './components/my-loader/dialog-bal.component';
 
 
 @NgModule({
@@ -74,7 +74,6 @@ import { IpAddressService } from './services/IpAddress.service';
     AppAgentLayoutComponent,
     MyLoaderComponent,
     WithdrawalComponent,
-    
     DialogBalComponent
   ],
   imports: [
