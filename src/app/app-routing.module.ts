@@ -1,3 +1,6 @@
+import { UserAuthGuardService } from './AuthGuard/UserAuthGuardService';
+import { UserDashboardComponent } from './UserDashboard/app.UserDashboardComponent';
+import { AppUserLayoutComponent } from './_layout/app-userlayout.component';
 import { AdminDashboardComponent } from './AdminDashboard/app.AdminDashboardComponent';
 import { Routes, RouterModule } from '@angular/router';
 import { AppAdminLayoutComponent } from './_layout/app-adminlayout.component';
@@ -24,138 +27,182 @@ import { UserLogoutComponent } from './Login/app.UserLogout.Component';
 import { AgentLogoutComponent } from './Login/agent-logout.component';
 import { NgModule } from '@angular/core';
 
-
 const routes: Routes = [
-
   //Admin path
   {
     path: 'Role',
     component: AppAdminLayoutComponent,
     children: [
-      { path: 'Add', component: RoleComponent , canActivate: [AdminAuthGuardService] },
-    ]
+      {
+        path: 'Add',
+        component: RoleComponent,
+        canActivate: [AdminAuthGuardService],
+      },
+    ],
   },
-    {
-      path: 'User',
-      component: AppAdminLayoutComponent,
-      children: [
-        { path: 'Add', component: UserRegistrationComponent , canActivate: [AdminAuthGuardService] },
-        { path: 'Edit/:UserId', component: EditUserRegistrationComponent , canActivate: [AdminAuthGuardService] },
-      ]
-    },
-    {
-      path: 'Assign',
-      component: AppAdminLayoutComponent,
-      children: [
-        { path: 'Role', component: AssignRoleComponent , canActivate: [AdminAuthGuardService] }
-      ]
-    },
   {
-     path: 'Scheme',
-     component: AppAdminLayoutComponent,
-     children: [
-       { path: 'Add', component: SchemeComponent , canActivate: [AdminAuthGuardService] },
-     ]
-   },
-   {
-      path: 'Game',
-      component: AppAdminLayoutComponent,
-      children: [
-        { path: 'Add', component: GameComponent , canActivate: [AdminAuthGuardService] },
-      ]
-    },
-    {
-      path: 'Admin',
-      component: AppAdminLayoutComponent,
-      children: [
-        { path: 'Dashboard', component: AdminDashboardComponent , canActivate: [AdminAuthGuardService]  }
+    path: 'User',
+    component: AppAdminLayoutComponent,
+    children: [
+      {
+        path: 'Add',
+        component: UserRegistrationComponent,
+        canActivate: [AdminAuthGuardService],
+      },
+      {
+        path: 'Edit/:UserId',
+        component: EditUserRegistrationComponent,
+        canActivate: [AdminAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'Assign',
+    component: AppAdminLayoutComponent,
+    children: [
+      {
+        path: 'Role',
+        component: AssignRoleComponent,
+        canActivate: [AdminAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'Scheme',
+    component: AppAdminLayoutComponent,
+    children: [
+      {
+        path: 'Add',
+        component: SchemeComponent,
+        canActivate: [AdminAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'Game',
+    component: AppAdminLayoutComponent,
+    children: [
+      {
+        path: 'Add',
+        component: GameComponent,
+        canActivate: [AdminAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'Admin',
+    component: AppAdminLayoutComponent,
+    children: [
+      {
+        path: 'Dashboard',
+        component: AdminDashboardComponent,
+        canActivate: [AdminAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'AgentMoney',
+    component: AppAdminLayoutComponent,
+    children: [
+      {
+        path: 'Add',
+        component: AddMoneyComponent,
+        canActivate: [AdminAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'AllTransaction',
+    component: AppAdminLayoutComponent,
+    children: [
+      {
+        path: 'View',
+        component: AllTransactionComponent,
+        canActivate: [AdminAuthGuardService],
+      },
+    ],
+  },
 
-      ]
-    },
-    {
-      path: 'AgentMoney',
-      component: AppAdminLayoutComponent,
-      children: [
-        { path: 'Add', component: AddMoneyComponent , canActivate: [AdminAuthGuardService]  }
+  //agent path
+  {
+    path: 'AgentUser',
+    component: AppAgentLayoutComponent,
+    children: [
+      {
+        path: 'CreateUser',
+        component: AgentUserComponent,
+        canActivate: [AgentAuthGuardService],
+      },
+    ],
+  },
 
-      ]
-    },
-    {
-      path: 'AllTransaction',
-      component: AppAdminLayoutComponent,
-      children: [
-        { path: 'View', component: AllTransactionComponent , canActivate: [AdminAuthGuardService]  }
+  {
+    path: 'Agent',
+    component: AppAgentLayoutComponent,
+    children: [
+      {
+        path: 'Dashboard',
+        component: AgentDashboardComponent,
+        canActivate: [AgentAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'Agent',
+    component: AppAgentLayoutComponent,
+    children: [
+      {
+        path: 'Withdrawal',
+        component: WithdrawalComponent,
+        canActivate: [AgentAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'Agent',
+    component: AppAgentLayoutComponent,
+    children: [
+      {
+        path: 'Transaction',
+        component: AgentTransactionComponent,
+        canActivate: [AgentAuthGuardService],
+      },
+    ],
+  },
+  //user path
+  {
+    path: 'Client',
+    component: AppUserLayoutComponent,
+    children: [
+      {
+        path: 'Dashboard',
+        component: UserDashboardComponent,
+        canActivate: [UserAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'Profile',
+    component: AppUserLayoutComponent,
+    children: [
+      {
+        path: 'User',
+        component: ProfileComponent
+      },
+    ],
+  },
+  { path: 'Login', component: LoginComponent },
+  { path: 'AdminLogout', component: AdminLogoutComponent },
+  { path: 'UserLogout', component: UserLogoutComponent },
+  { path: 'AgentLogout', component: AgentLogoutComponent },
+  { path: 'Profile', component: ProfileComponent },
 
-      ]
-    } ,
-    {
-      path: 'Profile',
-      component: AppAdminLayoutComponent,
-      children: [
-        { path: 'Admin', component: ProfileComponent }
-      ]
-    },
-
-    //agent path
-    {
-      path: 'AgentUser',
-      component: AppAgentLayoutComponent,
-      children: [
-        { path: 'CreateUser', component: AgentUserComponent , canActivate: [AgentAuthGuardService] },
-      ]
-    },
-    {
-      path: 'Deposit',
-      component: AppAgentLayoutComponent,
-      children: [
-        { path: 'AddMoney', component: DepositMoneyComponent , canActivate: [AgentAuthGuardService] },
-      ]
-    },
-
-    {
-      path: 'Agent',
-      component: AppAgentLayoutComponent,
-      children: [
-        { path: 'Dashboard', component: AgentDashboardComponent , canActivate: [AgentAuthGuardService]  }
-
-      ]
-    },
-    {
-      path: 'Agent',
-      component: AppAgentLayoutComponent,
-      children: [
-        { path: 'Withdrawal', component: WithdrawalComponent , canActivate: [AgentAuthGuardService]  }
-
-      ]
-    },
-    {
-      path: 'Agent',
-      component: AppAgentLayoutComponent,
-      children: [
-        { path: 'Transaction', component: AgentTransactionComponent , canActivate: [AgentAuthGuardService]  }
-
-      ]
-    },
-    {
-      path: 'Profile',
-      component: AppAgentLayoutComponent,
-      children: [
-        { path: 'Agent', component: ProfileComponent }
-      ]
-    },
-   { path: 'Login', component: LoginComponent },
-   { path: 'AdminLogout', component: AdminLogoutComponent },
-   { path: 'UserLogout', component: UserLogoutComponent },
-   { path: 'AgentLogout', component: AgentLogoutComponent },
-   { path: 'Profile', component: ProfileComponent },
-
-   { path: '', redirectTo: "Login", pathMatch: 'full' },
-   { path: '**', redirectTo: "Login", pathMatch: 'full' }
-   
+  { path: '', redirectTo: 'Login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'Login', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

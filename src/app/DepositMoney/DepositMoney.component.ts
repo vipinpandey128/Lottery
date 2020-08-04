@@ -63,7 +63,7 @@ export class DepositMoneyComponent implements OnInit {
   saveAmount() {
     if (this.userModel != null) {
       this.transactionModel.UserId = this.userModel.Id;
-      this.transactionModel.CurrentBal = this.userModel.CurrentBal;
+      this.transactionModel.TransactionAmount = this.userModel.CurrentBal;
       this._depositMoney
         .DepositMoney(this.transactionModel)
         .subscribe((transaction) => {

@@ -1,3 +1,4 @@
+import { UserProfileService } from './Profile/service/user-profile.service';
 import { AngularMaterialModule } from './module/angular-material.module';
 import { NotificationService } from './services/Notification.service';
 import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
@@ -99,7 +100,7 @@ import { DialogBalComponent } from './components/my-loader/dialog-bal.component'
     UserAuthGuardService,
     AgentAuthGuardService,
     LoaderService,
-    IpAddressService,
+    IpAddressService, 
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

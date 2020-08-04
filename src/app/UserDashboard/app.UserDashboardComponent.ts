@@ -1,10 +1,21 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {
+  MatDialog,
+  MatDialogConfig,
+  MatDialogRef,
+} from '@angular/material/dialog';
 
 @Component({
-    templateUrl:'./app.UserDashboardComponent.html'
+  templateUrl: './app.UserDashboardComponent.html',
 })
+export class UserDashboardComponent implements OnInit {
+  
+  constructor() {}
 
-export class UserDashboardComponent
-{
+  ngOnInit(): void {
+   
+    
+  }
 
+   
 }

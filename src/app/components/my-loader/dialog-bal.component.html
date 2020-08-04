@@ -1,11 +1,25 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite color?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()" ><p>
+  <mat-form-field appearance="legacy">
+    <mat-label>Enter Amount</mat-label>
+    <input type="number" autocomplete="off" name="amount" required formControlName="amount" matInput placeholder="Enter Amount">
+    <mat-icon matSuffix>monetization_on</mat-icon>
+    <mat-hint>100,200,300</mat-hint>
   </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="legacy">
+    <mat-label>Enter User Pin</mat-label>
+    <input type="number" autocomplete="off" name="pin" required formControlName='pin' matInput placeholder="Enter User Pin">
+    <mat-icon matSuffix>vpn_key</mat-icon>
+    <mat-hint>1234,2222</mat-hint>
+  </mat-form-field>
+</p>
+<div mat-dialog-actions style="float: right !important;">
+  <!-- <button mat-mini-fab color='warn' (click)="onNoClick()"><span class="material-icons">
+    close
+    </span></button> -->
+  <button mat-mini-fab color='primary' type="submit" [disabled]="amount.invalid || pin.invalid" matTooltip="Info about the action"><span class="material-icons">
+    check
+    </span></button>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-</div>
+</form>

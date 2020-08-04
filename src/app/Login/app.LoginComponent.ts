@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
     this._loginservice
       .validateLoginUser(this.LoginModel)
       .subscribe((response) => {
+        console.log(response);
         if (response.Token == null && response.Usertype == "0") {
           this.snackBar.openSnackBar(
             "Invalid Username and Password"
@@ -71,7 +72,7 @@ export class LoginComponent implements OnInit {
           this.snackBar.openSnackBar(
             "Logged in Successfully"
           );
-          this._Route.navigate(["/User/Dashboard"]);
+          this._Route.navigate(["/Client/Dashboard"]);
         }
       });
   }

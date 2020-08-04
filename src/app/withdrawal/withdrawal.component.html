@@ -9,6 +9,13 @@
             placeholder="Search User"
           />
         </mat-form-field>
+        <mat-chip-list>
+          <mat-chip color="accent" selected>
+             Your Current Balance <span class="material-icons">
+              attach_money
+              </span> <b>{{agentBal}}</b>
+          </mat-chip>
+        </mat-chip-list>
       </div>
 
       <div class="mat-elevation-z8">
@@ -72,13 +79,13 @@
 
           <!-- Deposit Action Column -->
           <ng-container matColumnDef="Deposit">
-            <th mat-header-cell *matHeaderCellDef>Deposit</th>
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bold;">Deposit</th>
             <td mat-cell *matCellDef="let element">
               <button
                 mat-mini-fab
                 color="primary"
                 class="btn btn-sm btn-primary"
-                (click)="Deposit(element.UserId)"
+                (click)="Deposit(element.UserId,4)"
               >
                 <span class="material-icons">
                   add_circle_outline
@@ -88,13 +95,13 @@
           </ng-container>
           <!-- Deposit Action Column -->
           <ng-container matColumnDef="Withdrawal">
-            <th mat-header-cell *matHeaderCellDef>Withdrawal</th>
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bold;">Withdrawal</th>
             <td mat-cell *matCellDef="let element">
               <button
                 mat-mini-fab
                 color="red"
                 class="btn btn-sm btn-danger"
-                (click)="Deposit(element.UserId)"
+                (click)="Deposit(element.UserId,3)"
               >
                 <span class="material-icons">
                   remove_circle_outline

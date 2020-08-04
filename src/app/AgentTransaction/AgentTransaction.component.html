@@ -1,3 +1,121 @@
-<p>
-  AgentTransaction works!
-</p>
+<hr />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css"
+/>
+<mat-card
+  ><mat-card-content>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+          <div class="row">
+          <div class="col-md-2">
+            <input
+              required
+              [(ngModel)]="searchModel.fromDate"
+              name="fromDate"
+              id="fromDate"
+              (ngModelChange)="onChangeFromDate($event)"
+              [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+              class="form-control"
+              #reffromDate="bsDatepicker"
+              placeholder="Entre From Date"
+              [minDate]="fromminDate"
+              [maxDate]="frommaxDate"
+              autocomplete="off"
+              bsDatepicker
+            />
+          </div>
+          <div class="col-md-2">
+            <input
+              required
+              [(ngModel)]="searchModel.toDate"
+              name="Paymentfromto"
+              id="Paymentfromto"
+              [isDisabled]="showDatepicker"
+              [minDate]="tominDate"
+              [maxDate]="tomaxDate"
+              autocomplete="off"
+              [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+              class="form-control"
+              placeholder="Entre To Date"
+              #refPaymentfromto="bsDatepicker"
+              bsDatepicker
+            />
+          </div>
+          <div class="col-md-1">
+            <button mat-raised-button color='primary'
+              type="submit"
+              [disabled]="!f.form.valid"
+              class="btn btn-success"
+            >
+              Search
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button  color='accent'
+              [disabled]="exportbutton"
+              mat-raised-button
+              class="btn btn-info"
+            >
+              Export as Excel
+            </button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<hr />
+<mat-card
+  ><mat-card-content>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="example-container mat-elevation-z8" #TABLE>
+          <div class="example-header" style="margin-left: 10px;">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter grid">
+            </mat-form-field>
+        </div>
+          <table mat-table matSort #table [dataSource]="dataSource">
+            <!-- Name Column -->
+            <ng-container matColumnDef="TransactionTypeName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Transaction Type Name</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-chip-list aria-label="Fish selection">
+                  <mat-chip selected>{{ element.TransactionTypeName }}</mat-chip>
+                </mat-chip-list>
+              </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="TransactionAmount">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Transaction Amount</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.TransactionAmount }}
+              </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Username">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
+              <td mat-cell *matCellDef="let element">{{ element.Username }}</td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="DateTime">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>DateTime</th>
+              <td mat-cell *matCellDef="let element">{{ element.DateTime | date :'medium'  }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

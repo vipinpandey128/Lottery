@@ -100,6 +100,17 @@ export class _agentUserService {
             );
     }
 
+    // GetAgentBal
+    public GetAgentBal() {
+        var getAgentBal = this.apiUrl+"/GetAgentBal";
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
+        return this.http.get<any>(getAgentBal, { headers: headers })
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
+
     private handleError(error: HttpErrorResponse) {
       if (error.error instanceof ErrorEvent) {
           // A client-side or network error occurred. Handle it accordingly.
