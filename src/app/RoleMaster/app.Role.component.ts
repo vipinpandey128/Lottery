@@ -62,7 +62,8 @@ export class RoleComponent implements OnInit
                     this.snackbar.openSnackBar('Role Already Exists');
                 }
                 else if (this.output.StatusCode == "200") {
-                    this.snackbar.openSnackBar('');
+                    this.snackbar.openSnackBar('Role Created Successfully..');
+                    this.getRole();
                 }
                 else {
                     this.snackbar.openSnackBar('Something Went Wrong');

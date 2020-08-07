@@ -8,7 +8,7 @@
     <mat-card-content>
         <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <input type="text" placeholder="Enter Role" class="form-control" name="RoleName" [(ngModel)]="RoleModel.RoleName" maxlength="50"
                         #refRoleName="ngModel" id="RoleName" required>
                     <div *ngIf="!refRoleName.valid  && (refRoleName.dirty || refRoleName.touched)" class="alert-danger">
@@ -17,8 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <label for="name"></label>
+                <div class="col-md-2">
                     <mat-checkbox type="checkbox" name="Status" [(ngModel)]="RoleModel.Status" maxlength="50" #refStatus="ngModel"
                         id="Status">Status</mat-checkbox>
                     <div *ngIf="!refStatus.valid  && (refStatus.dirty || refStatus.touched)" class="alert-danger">
@@ -27,10 +26,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-1">
                     <button type="submit" color="primary" mat-raised-button style="margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
                 </div>
-                <div class="col-md-4"></div>
+               
             </div>
         </form>
 

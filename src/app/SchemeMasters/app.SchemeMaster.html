@@ -1,106 +1,206 @@
-<hr>
+<hr />
 <mat-chip-list aria-label="Fish selection">
   <mat-chip color="accent" selected>Add/Remove/Update Scheme</mat-chip>
 </mat-chip-list>
-<hr>
+<hr />
 <div class="panel panel-default">
-    <div class="panel-heading"></div>
-    <div class="panel-body">
-        <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
-            <div class="row">
-                <div class="col-md-3">
-                    <input type="text" placeholder="Enter Scheme Name" class="form-control" name="SchemeName" [(ngModel)]="SchemeForms.SchemeName"
-                        maxlength="50" #refSchemeName="ngModel" id="SchemeName" required>
-                    <div *ngIf="!refSchemeName.valid  && (refSchemeName.dirty || refSchemeName.touched)" class="alert-danger">
-                        <div [hidden]="!refSchemeName.errors.required">
-                            SchemeName is required
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <input type="number" placeholder="Enter Scheme Win Percentage" class="form-control" name="WinPer" [(ngModel)]="SchemeForms.WinPer"
-                        maxlength="50" #refWinPer="ngModel" id="WinPer" required>
-                    <div *ngIf="!refWinPer.valid  && (refWinPer.dirty || refWinPer.touched)" class="alert-danger">
-                        <div [hidden]="!refWinPer.errors.required">
-                            Scheme Win Rate is required
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <label for="name"></label>
-                    <mat-checkbox type="checkbox" name="Status" [(ngModel)]="SchemeForms.Status"
-                        maxlength="50" #refStatus="ngModel" id="SchemeName">Status</mat-checkbox>
-                </div>
-            
-                <div class="col-md-1">
-                    <button color="accent" mat-raised-button type="submit" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
-                   
-                </div>
+  <div class="panel-heading"></div>
+  <div class="panel-body">
+    <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-2">
+          <input
+            type="text"
+            placeholder="Enter Scheme Name"
+            class="form-control"
+            name="SchemeName"
+            [(ngModel)]="SchemeForms.SchemeName"
+            maxlength="50"
+            #refSchemeName="ngModel"
+            id="SchemeName"
+            required
+          />
+          <div
+            *ngIf="!refSchemeName.valid  && (refSchemeName.dirty || refSchemeName.touched)"
+            class="alert-danger"
+          >
+            <div [hidden]="!refSchemeName.errors.required">
+              SchemeName is required
             </div>
-        </form>
-    </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <input
+            type="number"
+            placeholder="Enter Scheme Win Percentage"
+            class="form-control"
+            name="WinPer"
+            [(ngModel)]="SchemeForms.WinPer"
+            maxlength="50"
+            #refWinPer="ngModel"
+            id="WinPer"
+            required
+          />
+          <div
+            *ngIf="!refWinPer.valid  && (refWinPer.dirty || refWinPer.touched)"
+            class="alert-danger"
+          >
+            <div [hidden]="!refWinPer.errors.required">
+              Scheme Win Rate is required
+            </div>
+          </div>
+        </div>
+         
+        <div class="col-md-6">
+          <textarea
+            placeholder="Enter Scheme Terms And Conditions"
+            class="form-control"
+            name="Terms"
+            [(ngModel)]="SchemeForms.Terms"
+            #refTerms="ngModel"
+            id="Terms"
+            required
+          ></textarea>
+          <div
+            *ngIf="!refTerms.valid  && (refTerms.dirty || refTerms.touched)"
+            class="alert-danger"
+          >
+            <div [hidden]="!refTerms.errors.required">
+              Scheme Terms is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-1">
+          <mat-checkbox
+            type="checkbox"
+            name="Status"
+            [(ngModel)]="SchemeForms.Status"
+            maxlength="50"
+            #refStatus="ngModel"
+            id="SchemeName"
+            >Status</mat-checkbox
+          >
+        </div>
+
+        <div class="col-md-1">
+          <button
+            color="accent"
+            mat-raised-button
+            type="submit"
+            [disabled]="!f.form.valid"
+            class="btn btn-success"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
-<hr>
+<hr />
 <mat-card class="example-card">
   <mat-card-content>
     <div class="row">
       <div class="col-md-12">
         <div class="example-header">
           <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            <input
+              matInput
+              (keyup)="applyFilter($event.target.value)"
+              placeholder="Filter"
+            />
           </mat-form-field>
         </div>
 
         <div class="mat-elevation-z8">
-          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            matSort
+            class="mat-elevation-z8"
+          >
             <!-- SchemeID Column -->
             <ng-container matColumnDef="SchemeID">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> SchemeID </th>
-              <td mat-cell *matCellDef="let element"> {{element.SchemeID}} </td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                SchemeID
+              </th>
+              <td mat-cell *matCellDef="let element">{{element.SchemeID}}</td>
             </ng-container>
             <!-- SchemeName Column -->
             <ng-container matColumnDef="SchemeName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> SchemeName </th>
-              <td mat-cell *matCellDef="let element"> {{element.SchemeName}} </td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                SchemeName
+              </th>
+              <td mat-cell *matCellDef="let element">{{element.SchemeName}}</td>
             </ng-container>
-             <!-- Scheme WinRate Column -->
-             <ng-container matColumnDef="WinPer">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Scheme Win Rate </th>
-              <td mat-cell *matCellDef="let element"> {{element.WinPer}} </td>
+            <!-- Scheme WinRate Column -->
+            <ng-container matColumnDef="WinPer">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Scheme Win Rate
+              </th>
+              <td mat-cell *matCellDef="let element">{{element.WinPer}}</td>
+            </ng-container>
+             <!-- Scheme Terms Column -->
+             <ng-container matColumnDef="Terms">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Scheme Terms
+              </th>
+              <td mat-cell *matCellDef="let element">{{element.Terms}}</td>
             </ng-container>
             <!-- Status Column -->
             <ng-container matColumnDef="Status">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-              <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+              <td mat-cell *matCellDef="let element">{{element.Status}}</td>
             </ng-container>
             <!-- Createddate Column -->
             <ng-container matColumnDef="Createddate">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Createddate </th>
-              <td mat-cell *matCellDef="let element"> {{element.Createddate}} </td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Createddate
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{element.Createddate}}
+              </td>
             </ng-container>
             <!-- EditAction Column -->
             <ng-container matColumnDef="EditAction">
-              <th mat-header-cell *matHeaderCellDef> Action </th>
-              <td mat-cell *matCellDef="let element"> 
-                <button mat-raised-button color="primary" (click)="Edit(element.SchemeID)">Edit</button> </td>
+              <th mat-header-cell *matHeaderCellDef>Action</th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="Edit(element.SchemeID)"
+                >
+                  Edit
+                </button>
+              </td>
             </ng-container>
             <!-- DeleteAction Column -->
             <ng-container matColumnDef="DeleteAction">
-              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <th mat-header-cell *matHeaderCellDef>Action</th>
               <td mat-cell *matCellDef="let element">
-                <button mat-raised-button color="warn" (click)="Delete(element.SchemeID)">Delete</button>
+                <button
+                  mat-raised-button
+                  color="warn"
+                  (click)="Delete(element.SchemeID)"
+                >
+                  Delete
+                </button>
               </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-          <mat-paginator [length]="length"
-          [pageSize]="pageSize"
-          [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
+          <mat-paginator
+            [length]="length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            showFirstLastButtons
+          ></mat-paginator>
         </div>
       </div>
     </div>
-    </mat-card-content>
-    </mat-card>
+  </mat-card-content>
+</mat-card>

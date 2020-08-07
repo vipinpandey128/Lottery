@@ -17,7 +17,6 @@ import { AppComponent } from './app.component';
 import { SchemeComponent } from './SchemeMasters/app.Scheme.Component';
 import { RoleComponent } from './RoleMaster/app.Role.component';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
-import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.Component';
 import { AssignRoleComponent } from './AssignRole/app.AssignRole.Component';
 import { LoginComponent } from './Login/app.LoginComponent';
 import { AppAdminLayoutComponent } from './_layout/app-adminlayout.component';
@@ -44,7 +43,8 @@ import { LoaderService } from './services/loader.service';
 import { WithdrawalComponent } from './withdrawal/withdrawal.component';
 import { IpAddressService } from './services/IpAddress.service';
 import { DialogBalComponent } from './components/my-loader/dialog-bal.component';
-
+import { PostWinningComponent } from './post-winning/post-winning.component';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,6 @@ import { DialogBalComponent } from './components/my-loader/dialog-bal.component'
     SchemeComponent,
     RoleComponent,
     UserRegistrationComponent,
-    EditUserRegistrationComponent,
     AssignRoleComponent,
     LoginComponent,
     AdminLogoutComponent,
@@ -75,7 +74,10 @@ import { DialogBalComponent } from './components/my-loader/dialog-bal.component'
     AppAgentLayoutComponent,
     MyLoaderComponent,
     WithdrawalComponent,
-    DialogBalComponent
+    DialogBalComponent,
+    PostWinningComponent,
+    TermsComponent,
+    
   ],
   imports: [
     ReactiveFormsModule,

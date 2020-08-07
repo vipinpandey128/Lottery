@@ -5,7 +5,8 @@
 </mat-chip-list>
 <hr>
                 <form #f="ngForm" (ngSubmit)="onSubmit(buttonType)" novalidate>
-                    <div class="col-md-3">
+                    <div class="row">
+                    <div class="col-md-2">
                         <label>User</label>
                         <select required name="UserId" #refUserId="ngModel"  class="form-control"
                             [(ngModel)]="AssignRemoveModel.UserId">
@@ -15,7 +16,7 @@
                             </option>
                         </select>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <label>Role</label>
                         <select required name="RoleId" #refRoleId="ngModel" class="form-control" 
                             [(ngModel)]="AssignRemoveModel.RoleId">
@@ -25,12 +26,13 @@
                             </option>
                         </select>
                     </div>
-                    <div class="col-md-3">
-                        <button mat-raised-button type="submit" (click)="onSubmit('onAssign')" style="margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-success">Assign Role</button>
+                    <div class="col-md-2">
+                        <button mat-raised-button type="submit" style="margin-top: 32px;" (click)="onSubmit('onAssign')" [disabled]="!f.form.valid" ng class="btn btn-success btn-sm">Assign Role</button>
                     </div>
-                    <div class="col-md-3">
-                        <button mat-raised-button type="submit" (click)="onSubmit('onRemove')"  style="margin-left: 10px; margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-danger">Remove Role</button>
+                    <div class="col-md-1">
+                        <button mat-raised-button type="submit" style="margin-top: 32px;" (click)="onSubmit('onRemove')"  [disabled]="!f.form.valid" class="btn btn-danger btn-sm">Remove Role</button>
                     </div>
+                </div>
                 </form>
    
 

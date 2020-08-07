@@ -49,7 +49,25 @@ export class UserRegistrationComponent implements OnInit {
     }
     onSubmit() 
     {
-        this._userService.SaveUser(this.UserModel).subscribe(
+      console.log(this.UserModel.UserId);
+        if(this.UserModel.UserId>0)
+        {
+          this._userService.UpdateUser(this.UserModel).subscribe(
+            response => {
+               // console.log(this.UserModel);
+            this.output = response
+             if (this.output.StatusCode == "200") {
+                this._snack.openSnackBar('User Updated Successfully');
+                this.getAllUser();
+                this.UserModel = null;
+            }
+            else {
+                this._snack.openSnackBar('Something Went Wrong');
+            }
+        });
+        }else
+        {
+          this._userService.SaveUser(this.UserModel).subscribe(
             response => {
                // console.log(this.UserModel);
             this.output = response
@@ -59,11 +77,13 @@ export class UserRegistrationComponent implements OnInit {
             else if (this.output.StatusCode == "200") {
                 this._snack.openSnackBar('User Created Successfully');
                 this.getAllUser();
+                this.UserModel = null;
             }
             else {
                 this._snack.openSnackBar('Something Went Wrong');
             }
         });
+        }
     }
 
     getAllUser() {
@@ -84,9 +104,9 @@ export class UserRegistrationComponent implements OnInit {
       applyFilter(filterValue: string) {
         this.dataSource.filter = filterValue.trim().toLowerCase();
       }
-      Delete(Id): void {
+      Delete(Id, userRefId): void {
         if (confirm("Are you sure to delete User ?")) {
-          this._userService.DeleteUser(Id).subscribe((response) => {
+          this._userService.DeleteUser(Id, userRefId).subscribe((response) => {
             if (response.StatusCode == "200") {
                 this._snack.openSnackBar("Deleted User Successfully");
               this.getAllUser();
@@ -96,7 +116,18 @@ export class UserRegistrationComponent implements OnInit {
           });
         }
       }
-    
-   
-    
+
+      Edit(userId, UserRefId)
+      {
+        this._userService.GetUserId(userId,UserRefId).subscribe(
+          userModel => {
+              this.UserModel = userModel
+          },
+          error => this.errorMessage = <any>error);
+      }
+
+      Reset()
+      {
+        this.UserModel = null;
+      }
 }

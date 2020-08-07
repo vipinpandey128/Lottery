@@ -92,4 +92,14 @@ export class AgentUserComponent implements OnInit {
       });
     }
   }
+
+  Edit(Id): void {
+    this._userService.GetUserId(Id).subscribe((response) => {
+      if (response.StatusCode == '200') {
+        this.UserModel = response;
+      } else {
+        this._snack.openSnackBar('Something Went Wrong');
+      }
+    });
+  }
 }

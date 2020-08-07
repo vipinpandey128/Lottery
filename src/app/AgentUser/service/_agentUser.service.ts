@@ -38,7 +38,7 @@ export class _agentUserService {
 
     // Update User
     public UpdateUser(usermodel: UserModel) {
-        var putUrl = this.apiUrl+"/" + usermodel.Id;
+        var putUrl = this.apiUrl+"/" + usermodel.UserId+"/"+usermodel.UserRefId;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.put<any>(putUrl, usermodel, { headers: headers })
@@ -110,6 +110,8 @@ export class _agentUserService {
                 catchError(this.handleError)
             );
     }
+
+   
 
     private handleError(error: HttpErrorResponse) {
       if (error.error instanceof ErrorEvent) {

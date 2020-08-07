@@ -38,7 +38,7 @@ export class UserService
 
     // Update User
     public UpdateUser(usermodel: UserModel) {
-        var putUrl = this.apiUrl+"/" + usermodel.Id;
+        var putUrl = this.apiUrl+"/" + usermodel.UserId;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.put<any>(putUrl, usermodel, { headers: headers })
@@ -59,8 +59,8 @@ export class UserService
     }
 
      // Get MemberBy Id
-     public GetUserId(Id) {
-        var editUrl = this.apiUrl+"/" + Id;
+     public GetUserId(Id, UserRefId) {
+        var editUrl = this.apiUrl+"/" + Id+"/"+UserRefId;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.get<UserModel>(editUrl, { headers: headers }).pipe(tap(data => data),
@@ -89,9 +89,9 @@ export class UserService
 
 
     // DeleteUser
-    public DeleteUser(Id) {
-        var deleteUrl = this.apiUrl+"/" + Id;
-        console.log("delete url-----"+deleteUrl);
+    public DeleteUser(Id, userRefId) {
+        var deleteUrl = this.apiUrl+"/" + Id + "/"+userRefId;
+        //console.log("delete url-----"+deleteUrl);
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.delete<any>(deleteUrl, { headers: headers })

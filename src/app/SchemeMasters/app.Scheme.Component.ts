@@ -25,6 +25,7 @@ export class SchemeComponent implements OnInit {
     'SchemeID',
     'SchemeName',
     'WinPer',
+    'Terms',
     'Status',
     'Createddate',
     'EditAction',
@@ -36,7 +37,6 @@ export class SchemeComponent implements OnInit {
   length = 100;
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
-
   constructor(
     private _Route: Router,
     public snackBar: NotificationService,

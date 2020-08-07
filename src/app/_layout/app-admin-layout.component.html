@@ -33,12 +33,12 @@
       </li>
       <li class="nav-item">
         <a routerLinkActive="red" class="nav-link" [routerLink]="['/Game/Add']"
-          >Create Game</a
+          >Add Game</a
         >
       </li>
       <li class="nav-item">
         <a routerLinkActive="red" class="nav-link" [routerLink]="['/User/Add']"
-          >Create Agent</a
+          >Add Agent</a
         >
       </li>
       <li class="nav-item">
@@ -66,12 +66,23 @@
           >All Transaction</a
         >
       </li>
+     
       <li class="nav-item">
         <a
           routerLinkActive="red"
           class="nav-link"
-          [routerLink]="['/Profile']"
-          >Profile</a
+          [routerLink]="['/PostWining/View']"
+          >Post Winning</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          routerLinkActive="red"
+          class="nav-link"
+          [routerLink]="['/Profile/Admin']"
+          ><span class="material-icons">
+            face
+            </span></a
         >
       </li>
       <li class="nav-item">
@@ -79,7 +90,9 @@
           routerLinkActive="red"
           class="nav-link"
           [routerLink]="['/AdminLogout']"
-          ><i class="fa fa-edit fa-fw"></i>Logout</a
+          ><span class="material-icons">
+            power_settings_new
+            </span></a
         >
       </li>
     </ul>

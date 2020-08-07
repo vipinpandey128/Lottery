@@ -10,7 +10,7 @@ import { LoginService } from "./Services/app.LoginService";
 
 @Component({
   templateUrl: "./app.login.html",
-  styleUrls: [],
+  styleUrls: ['./app.login.css'],
 })
 export class LoginComponent implements OnInit {
   
@@ -43,11 +43,18 @@ export class LoginComponent implements OnInit {
     this.LoginModel.IpAddress = this.ipAddress;
     this._loginservice
       .validateLoginUser(this.LoginModel)
-      .subscribe((response) => {
+      .subscribe((response) => {                                       
         console.log(response);
         if (response.Token == null && response.Usertype == "0") {
           this.snackBar.openSnackBar(
             "Invalid Username and Password"
+          );
+          this._Route.navigate(["Login"]);
+        }
+
+        if (response.Status==false) {
+          this.snackBar.openSnackBar(
+            "User is deactivated !! contact to admin..."
           );
           this._Route.navigate(["Login"]);
         }

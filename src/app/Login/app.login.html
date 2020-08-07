@@ -1,33 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+        
+        <!-- The content half -->
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
 
-<head>
+                <!-- Demo content-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Login</title>
-
-</head>
-
-<body>
-    <div class="container" style="padding-top: 35px;">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div mat-card class="col-md-4 col-md-offset-4">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Please SignIn Here</mat-card-title>
-                      </mat-card-header>
-                      <mat-card-content>
+                            <h5 class="display-5 text-center">SignIn</h5>
                             <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
-                            <fieldset>
-                                <div class="form-group">
-                                        <label for="name">Username</label>
+                                <div class="form-group mb-3">
+                                    <label for="name">Username</label>
                                         <input autocomplete="false"  autofocus type="text" class="form-control" name="Username" [(ngModel)]="LoginModel.Username" maxlength="50"
                                             #refUsername="ngModel" id="Username" required>
                                         <div *ngIf="!refUsername.valid  && (refUsername.dirty || refUsername.touched)" class="alert alert-danger">
@@ -35,10 +23,9 @@
                                                     Username is required
                                             </div>
                                         </div>
-
                                 </div>
-                                <div class="form-group">
-                                        <label for="name">Password</label>
+                                <div class="form-group mb-3">
+                                    <label for="name">Password</label>
                                         <input autocomplete="off" autofocus type="password" class="form-control" name="Password" [(ngModel)]="LoginModel.Password" maxlength="50"
                                             #refPassword="ngModel" id="Password" required>
                                         <div *ngIf="!refPassword.valid  && (refPassword.dirty || refPassword.touched)" class="alert alert-danger">
@@ -47,18 +34,21 @@
                                             </div>
                                         </div>
                                 </div>
-                                <!-- Change this to a button or input when using this as a form -->
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input">
+                                    <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                </div>
                                 <button type="submit" mat-raised-button [disabled]="!f.form.valid" color="primary" class="btn-block">Login <span class="material-icons">
                                     login
                                     </span></button>
-                            </fieldset>
-                        </form>
-                      </mat-card-content>
-                </mat-card>
+                            </form>
+                           
+                        </div>
+                    </div>
+                </div> 
+
             </div>
-        </div>
+        </div> 
+     
     </div>
-
-</body>
-
-</html>
+</div>

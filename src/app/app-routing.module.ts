@@ -1,3 +1,4 @@
+import { PostWinningComponent } from './post-winning/post-winning.component';
 import { UserAuthGuardService } from './AuthGuard/UserAuthGuardService';
 import { UserDashboardComponent } from './UserDashboard/app.UserDashboardComponent';
 import { AppUserLayoutComponent } from './_layout/app-userlayout.component';
@@ -7,7 +8,6 @@ import { AppAdminLayoutComponent } from './_layout/app-adminlayout.component';
 import { RoleComponent } from './RoleMaster/app.Role.component';
 import { AdminAuthGuardService } from './AuthGuard/AdminAuthGuardService';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
-import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.Component';
 import { AssignRoleComponent } from './AssignRole/app.AssignRole.Component';
 import { SchemeComponent } from './SchemeMasters/app.Scheme.Component';
 import { GameComponent } from './Game/Game.component';
@@ -47,11 +47,6 @@ const routes: Routes = [
       {
         path: 'Add',
         component: UserRegistrationComponent,
-        canActivate: [AdminAuthGuardService],
-      },
-      {
-        path: 'Edit/:UserId',
-        component: EditUserRegistrationComponent,
         canActivate: [AdminAuthGuardService],
       },
     ],
@@ -122,6 +117,27 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'PostWining',
+    component: AppAdminLayoutComponent,
+    children: [
+      {
+        path: 'View',
+        component: PostWinningComponent,
+        canActivate: [AdminAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'Profile',
+    component: AppAdminLayoutComponent,
+    children: [
+      {
+        path: 'Admin',
+        component: ProfileComponent
+      },
+    ],
+  },
 
   //agent path
   {
@@ -166,6 +182,16 @@ const routes: Routes = [
         path: 'Transaction',
         component: AgentTransactionComponent,
         canActivate: [AgentAuthGuardService],
+      },
+    ],
+  },
+  {
+    path: 'Profile',
+    component: AppAgentLayoutComponent,
+    children: [
+      {
+        path: 'Agent',
+        component: ProfileComponent
       },
     ],
   },
