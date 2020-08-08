@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <mat-checkbox type="checkbox" name="Status" [(ngModel)]="RoleModel.Status" maxlength="50" #refStatus="ngModel"
+                    <mat-checkbox type="checkbox" name="Status" [(ngModel)]="RoleModel.Status" #refStatus="ngModel"
                         id="Status">Status</mat-checkbox>
                     <div *ngIf="!refStatus.valid  && (refStatus.dirty || refStatus.touched)" class="alert-danger">
                         <div [hidden]="!refStatus.errors.required">

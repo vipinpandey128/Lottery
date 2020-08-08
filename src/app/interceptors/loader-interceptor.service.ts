@@ -1,3 +1,4 @@
+import { NotificationService } from './../services/Notification.service';
 // loader-interceptor.service.ts
 import { Injectable } from '@angular/core';
 import {
@@ -9,12 +10,13 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoaderService } from '../services/loader.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
   private requests: HttpRequest<any>[] = [];
 
-  constructor(private loaderService: LoaderService) { }
+  constructor(private loaderService: LoaderService,private router: Router, private snack:NotificationService) { }
 
   removeRequest(req: HttpRequest<any>) {
     const i = this.requests.indexOf(req);
@@ -39,9 +41,14 @@ export class LoaderInterceptor implements HttpInterceptor {
             }
           },
           err => {
-            alert('error' + err);
+            this.snack.openSnackBar('Something is wrong ' + err.statusText);
             this.removeRequest(req);
             observer.error(err);
+            console.log(err);
+            if (err.status !== 401) {
+              return;
+             }
+             this.router.navigate(['Login']);
           },
           () => {
             this.removeRequest(req);

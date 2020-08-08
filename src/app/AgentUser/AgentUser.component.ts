@@ -65,6 +65,7 @@ export class AgentUserComponent implements OnInit {
   getAllUser() {
     this._userService.GetAllUsers().subscribe(
       (allUsers) => {
+        console.log(allUsers);
         this.AllUserList = allUsers;
         this.dataSource = new MatTableDataSource(this.AllUserList);
         this.dataSource.sort = this.sort;
@@ -80,9 +81,9 @@ export class AgentUserComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  Delete(Id): void {
+  Delete(Id, userRefId): void {
     if (confirm('Are you sure to delete User ?')) {
-      this._userService.DeleteUser(Id).subscribe((response) => {
+      this._userService.DeleteUser(Id, userRefId).subscribe((response) => {
         if (response.StatusCode == '200') {
           this._snack.openSnackBar('Deleted User Successfully');
           this.getAllUser();
@@ -93,9 +94,10 @@ export class AgentUserComponent implements OnInit {
     }
   }
 
-  Edit(Id): void {
-    this._userService.GetUserId(Id).subscribe((response) => {
-      if (response.StatusCode == '200') {
+  Edit(Id, userRefId): void {
+    this._userService.GetUserId(Id, userRefId).subscribe((response) => {
+      //console.log(response);
+      if (response!=null) {
         this.UserModel = response;
       } else {
         this._snack.openSnackBar('Something Went Wrong');

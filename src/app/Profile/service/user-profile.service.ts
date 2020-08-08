@@ -29,7 +29,7 @@ export class UserProfileService {
   public GetCurrentUser() {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-    //console.log(this.apiUrl);
+    console.log(this.apiUrl);
     return this.http.get<Userprofile[]>(this.apiUrl, { headers: headers }).pipe(tap(data => data),
         catchError(this.handleError)
     );

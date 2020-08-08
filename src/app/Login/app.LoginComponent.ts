@@ -52,14 +52,20 @@ export class LoginComponent implements OnInit {
           this._Route.navigate(["Login"]);
         }
 
-        if (response.Status==false) {
+        else if (response.Status==false) {
           this.snackBar.openSnackBar(
             "User is deactivated !! contact to admin..."
           );
           this._Route.navigate(["Login"]);
         }
-
-        if (response.Usertype == "1") {
+        else if(response.IsTermsAndConditions==false)
+        {
+          this.snackBar.openSnackBar(
+            "Logged in Successfully"
+          );
+          this._Route.navigate(["/terms", {url:response.Usertype=="1"?"/Admin/Dashboard":response.Usertype=="2"?"/Agent/Dashboard":"/Client/Dashboard"}]);
+        }
+        else if (response.Usertype == "1") {
           
           this.snackBar.openSnackBar(
             "Logged in Successfully"
@@ -67,14 +73,13 @@ export class LoginComponent implements OnInit {
 
           this._Route.navigate(["/Admin/Dashboard"]);
         }
-
-        if (response.Usertype == "2") {
+        else if(response.Usertype == "2") {
           this.snackBar.openSnackBar(
             "Logged in Successfully"
           );
           this._Route.navigate(["/Agent/Dashboard"]);
         }
-        if (response.Usertype == "3") {
+        else if(response.Usertype == "3") {
 
           this.snackBar.openSnackBar(
             "Logged in Successfully"

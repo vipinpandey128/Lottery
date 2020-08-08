@@ -66,7 +66,7 @@
               <div class="col-md-1">
                 <label for="name">Pin</label>
                 <input type="number" class="form-control" name="WithDrawalPin" [(ngModel)]="UserModel.WithDrawalPin"
-                    maxlength="5" #refWithDrawalPin="ngModel" id="Password" value='0' required>
+                    maxlength="5" min="0" #refWithDrawalPin="ngModel" id="Password" value='0' required>
                 <div *ngIf="!refWithDrawalPin.valid  && (refWithDrawalPin.dirty || refWithDrawalPin.touched)" class="alert alert-danger">
                     <div [hidden]="!refWithDrawalPin.errors.required">
                         Pin is required
@@ -80,7 +80,9 @@
                   </mat-chip-list>
                 </div>
                 <div class="col-md-1">
-                    <button mat-raised-button color="primary" type="submit" style="margin-top: 27px" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
+                    <button mat-mini-fab color="primary" type="submit" style="margin-top: 27px" [disabled]="!f.form.valid" class="btn btn-success"><span class="material-icons">
+                      how_to_reg
+                      </span></button>
                 </div>
             </div>
         </form>

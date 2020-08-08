@@ -1,3 +1,4 @@
+import { TicketComponent } from './Ticket/Ticket.component';
 import { UserProfileService } from './Profile/service/user-profile.service';
 import { AngularMaterialModule } from './module/angular-material.module';
 import { NotificationService } from './services/Notification.service';
@@ -77,6 +78,7 @@ import { TermsComponent } from './terms/terms.component';
     DialogBalComponent,
     PostWinningComponent,
     TermsComponent,
+    TicketComponent
     
   ],
   imports: [

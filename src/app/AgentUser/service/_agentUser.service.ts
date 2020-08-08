@@ -59,8 +59,8 @@ export class _agentUserService {
     }
 
      // Get MemberBy Id
-     public GetUserId(Id) {
-        var editUrl = this.apiUrl+"/" + Id;
+     public GetUserId(Id, userRefId) {
+        var editUrl = this.apiUrl+"/" + Id + "/"+ userRefId;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.get<UserModel>(editUrl, { headers: headers }).pipe(tap(data => data),

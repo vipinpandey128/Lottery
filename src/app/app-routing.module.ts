@@ -1,3 +1,5 @@
+import { TicketComponent } from './Ticket/Ticket.component';
+import { TermsComponent } from './terms/terms.component';
 import { PostWinningComponent } from './post-winning/post-winning.component';
 import { UserAuthGuardService } from './AuthGuard/UserAuthGuardService';
 import { UserDashboardComponent } from './UserDashboard/app.UserDashboardComponent';
@@ -208,6 +210,17 @@ const routes: Routes = [
     ],
   },
   {
+    path: 'Ticket',
+    component: AppUserLayoutComponent,
+    children: [
+      {
+        path: 'Bet',
+        component: TicketComponent,
+        canActivate: [UserAuthGuardService],
+      },
+    ],
+  },
+  {
     path: 'Profile',
     component: AppUserLayoutComponent,
     children: [
@@ -217,6 +230,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'terms', component: TermsComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'AdminLogout', component: AdminLogoutComponent },
   { path: 'UserLogout', component: UserLogoutComponent },
