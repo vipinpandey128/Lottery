@@ -12,7 +12,7 @@ export class AdminLogoutComponent implements OnInit
     }
     ngOnInit() {
         //localStorage.removeItem('AdminUser');
-        localStorage.removeItem('AdminUser');
+        localStorage.clear();
         this.snack.openSnackBar('You Are Logged Out Successfully.....');
         this._Route.navigate(['Login']);
     }

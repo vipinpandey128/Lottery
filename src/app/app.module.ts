@@ -46,6 +46,7 @@ import { IpAddressService } from './services/IpAddress.service';
 import { DialogBalComponent } from './components/my-loader/dialog-bal.component';
 import { PostWinningComponent } from './post-winning/post-winning.component';
 import { TermsComponent } from './terms/terms.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { TermsComponent } from './terms/terms.component';
     DialogBalComponent,
     PostWinningComponent,
     TermsComponent,
-    TicketComponent
+    TicketComponent,
+    PagenotfoundComponent
     
   ],
   imports: [

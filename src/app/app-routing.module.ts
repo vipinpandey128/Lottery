@@ -1,3 +1,4 @@
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { TicketComponent } from './Ticket/Ticket.component';
 import { TermsComponent } from './terms/terms.component';
 import { PostWinningComponent } from './post-winning/post-winning.component';
@@ -238,7 +239,7 @@ const routes: Routes = [
   { path: 'Profile', component: ProfileComponent },
 
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'Login', pathMatch: 'full' },
+  { path: '**', component: PagenotfoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

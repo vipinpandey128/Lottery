@@ -14,7 +14,7 @@ export class UserLogoutComponent implements OnInit
     ngOnInit()
     {
         //localStorage.removeItem('currentUser');
-        localStorage.removeItem('AdminUser');
+        localStorage.clear();
         this.snack.openSnackBar('You Are Logged Out Successfully.....');
         this._route.navigate(['Login']);
     }

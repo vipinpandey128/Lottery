@@ -53,12 +53,12 @@
          
         <div class="col-md-6">
           <textarea
-            placeholder="Enter Scheme Terms And Conditions"
+            placeholder="Enter Scheme Term And Conditions"
             class="form-control"
-            name="Terms"
-            [(ngModel)]="SchemeForms.Terms"
+            name="Term"
+            [(ngModel)]="SchemeForms.Term"
             #refTerms="ngModel"
-            id="Terms"
+            id="Term"
             required
           ></textarea>
           <div
@@ -168,11 +168,13 @@
               <th mat-header-cell *matHeaderCellDef>Action</th>
               <td mat-cell *matCellDef="let element">
                 <button
-                  mat-raised-button
+                mat-mini-fab
                   color="primary"
                   (click)="Edit(element.SchemeID)"
                 >
-                  Edit
+                <span class="material-icons">
+                  edit
+                  </span>
                 </button>
               </td>
             </ng-container>
@@ -181,11 +183,13 @@
               <th mat-header-cell *matHeaderCellDef>Action</th>
               <td mat-cell *matCellDef="let element">
                 <button
-                  mat-raised-button
+                  mat-mini-fab
                   color="warn"
                   (click)="Delete(element.SchemeID)"
                 >
-                  Delete
+                <span class="material-icons">
+                  delete_forever
+                  </span>
                 </button>
               </td>
             </ng-container>

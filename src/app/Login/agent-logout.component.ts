@@ -15,6 +15,7 @@ export class AgentLogoutComponent implements OnInit
     ngOnInit()
     {
         // localStorage.removeItem('AgentUser');
+        localStorage.clear();
         this.snack.openSnackBar('You Are Logged Out Successfully.....');
         this._route.navigate(['Login']);
         

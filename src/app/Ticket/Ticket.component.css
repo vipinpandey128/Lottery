@@ -3,6 +3,14 @@
   }
   
   .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-image: url('../../assets/lottoIcon.png');
     background-size: cover;
   }
+
+  .ng-invalid:not(form) {
+    border-left: 5px solid #ffffff00;
+}
+
+.container-fluid body{
+  background-image: url('../../assets/ticket.jpg') !important;
+}

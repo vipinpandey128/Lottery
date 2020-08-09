@@ -100,6 +100,7 @@ export class SchemeComponent implements OnInit {
         this.SchemeForms.SchemeID = Scheme.SchemeID;
         this.SchemeForms.SchemeName = Scheme.SchemeName;
         this.SchemeForms.WinPer = Scheme.WinPer;
+        this.SchemeForms.Term = Scheme.Terms;
         this.SchemeForms.Status = Scheme.Status;
       },
       (error) => (this.errorMessage = <any>error)

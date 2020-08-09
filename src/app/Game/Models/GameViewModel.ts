@@ -5,5 +5,6 @@ export class GameViewModel {
     WinPer:Number;
     StartTime='';
     EndTime='';
+    Terms='';
     IsActive:Boolean;
 }
